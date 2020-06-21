@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/work/shopUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/bg/shop_front/shop_front.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/player_shop.png" type="Texture" id=3]
+[ext_resource path="res://assets/bg/shop_front/shop_front_lighting.png" type="Texture" id=4]
+[ext_resource path="res://scenes/work/flicker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/work/shopGame.gd" type="Script" id=6]
+[ext_resource path="res://scenes/ui/speech.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ui/options.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/work/customers/kid.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "lookLeft"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("playerShop:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "look_around"
+length = 15.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("playerShop:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 6, 11.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1 ]
+}
+
+[node name="shopGame" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="bg" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="lamp" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="flicker" parent="." instance=ExtResource( 5 )]
+root_node = NodePath("..")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="shop_ui" parent="UI" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_right = 0.0
+
+[node name="speech" parent="UI" instance=ExtResource( 7 )]
+margin_left = 120.0
+margin_top = 89.0
+margin_right = 184.0
+margin_bottom = 151.0
+
+[node name="options" parent="UI" instance=ExtResource( 9 )]
+
+[node name="playerShop" type="Sprite" parent="."]
+position = Vector2( 264, 136 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 2
+
+[node name="player" type="AnimationPlayer" parent="."]
+autoplay = "look_around"
+anims/lookLeft = SubResource( 1 )
+anims/look_around = SubResource( 2 )
+
+[node name="customer_pos" type="Position2D" parent="."]
+position = Vector2( 210, 230 )
+
+[node name="customer" parent="." instance=ExtResource( 10 )]
+position = Vector2( 209, 228 )

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/work/bubbles.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/dialogueOption.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ui/indicator.png" type="Texture" id=4]
+
+[node name="options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -10.0
+margin_right = -10.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="option1" parent="buttons" instance=ExtResource( 3 )]
+
+[node name="option2" parent="buttons" instance=ExtResource( 3 )]
+margin_top = 28.0
+margin_bottom = 52.0
+
+[node name="option3" parent="buttons" instance=ExtResource( 3 )]
+margin_top = 56.0
+margin_bottom = 80.0
+
+[node name="bubbles" type="Position2D" parent="."]
+position = Vector2( 284, 128 )
+script = ExtResource( 1 )
+buttons_path = NodePath("../buttons")
+
+[node name="circle0" type="Sprite" parent="bubbles"]
+visible = false
+modulate = Color( 0.141176, 0.192157, 0.2, 0.666667 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 4 )
+
+[node name="circle1" type="Sprite" parent="bubbles"]
+visible = false
+modulate = Color( 0.141176, 0.192157, 0.2, 0.764706 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 4 )
+
+[node name="circle2" type="Sprite" parent="bubbles"]
+visible = false
+modulate = Color( 0.141176, 0.192157, 0.2, 1 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 4 )
+
+[node name="bubblesEnd" type="Position2D" parent="bubbles"]
+position = Vector2( 35, -19 )

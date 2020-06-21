@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/bg/toilet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/house/toilet.gd" type="Script" id=4]
+[ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=5]
+
+
+
+
+
+[node name="toilet" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="bg" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="collision" parent="." index="1"]
+bordersizeL = 70
+bordersizeR = 30
+
+[node name="toLanding" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 378, 150 )
+audio = "doorSFX"
+
+[node name="landingPos" type="Position2D" parent="." index="3"]
+position = Vector2( 344, 186 )
+script = ExtResource( 5 )
+facing = 0
+[connection signal="interacted" from="toLanding" to="." method="change_environment" binds= [ "landing" ]]

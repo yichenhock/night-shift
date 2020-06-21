@@ -1,0 +1,177 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/bg/mum_room.png" type="Texture" id=2]
+[ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=4]
+[ext_resource path="res://assets/bg/mum_room/spotlight.png" type="Texture" id=5]
+[ext_resource path="res://assets/bg/mum_room/wc.png" type="Texture" id=6]
+[ext_resource path="res://assets/bg/mum_room/bed_neat.png" type="Texture" id=7]
+[ext_resource path="res://assets/bg/mum_room/wall.png" type="Texture" id=8]
+[ext_resource path="res://assets/bg/mum_room/bed_shadow.png" type="Texture" id=9]
+[ext_resource path="res://assets/bg/mum_room/wc_shadow.png" type="Texture" id=10]
+[ext_resource path="res://assets/bg/mum_room/ecg_green.png" type="Texture" id=11]
+[ext_resource path="res://assets/bg/mum_room/bed_messy.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/mum_idle.png" type="Texture" id=13]
+[ext_resource path="res://scenes/house/shadow.gd" type="Script" id=14]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "ecg"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "swing"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spotlight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4, 6 ),
+"transitions": PoolRealArray( 2.21914, 0.5, -2, -0.5 ),
+"update": 0,
+"values": [ Vector2( 200, 230 ), Vector2( 210, 235 ), Vector2( 200, 230 ), Vector2( 210, 225 ) ]
+}
+
+[node name="mumRoom" instance=ExtResource( 1 )]
+
+[node name="bg" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="floor" type="ColorRect" parent="." index="1"]
+modulate = Color( 0.184314, 0.247059, 0.258824, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 420, 270 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="spotlight" type="Sprite" parent="." index="2"]
+position = Vector2( 200, 230 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="bed_shadow" type="Sprite" parent="." index="3"]
+position = Vector2( 156, 234 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+script = ExtResource( 14 )
+default_pos = Vector2( 154, 234 )
+multiplier = Vector2( -0.4, -0.4 )
+
+[node name="wc_shadow" type="Sprite" parent="." index="4"]
+position = Vector2( 298, 234 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+script = ExtResource( 14 )
+default_pos = Vector2( 296, 234 )
+multiplier = Vector2( -0.4, -0.4 )
+
+[node name="wall" type="Sprite" parent="." index="5"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ecg_green" type="Sprite" parent="." index="6"]
+position = Vector2( 236, 97 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+hframes = 5
+
+[node name="ecg" type="AnimationPlayer" parent="ecg_green" index="0"]
+autoplay = "ecg"
+anims/ecg = SubResource( 1 )
+
+[node name="bed_neat" type="Sprite" parent="." index="7"]
+visible = false
+position = Vector2( 154, 196 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bed_messy" type="Sprite" parent="." index="8"]
+position = Vector2( 154, 196 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="mum" type="Sprite" parent="." index="9"]
+position = Vector2( 133, 159 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="mum_idle" type="AnimationPlayer" parent="mum" index="0"]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+
+[node name="mumInteract" parent="." index="10" instance=ExtResource( 3 )]
+position = Vector2( 132, 150 )
+
+[node name="wc" type="Sprite" parent="." index="11"]
+position = Vector2( 298, 196 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="collision" parent="." index="12"]
+bordersizeL = 10
+bordersizeR = 10
+
+[node name="toUpstairs" parent="." index="13" instance=ExtResource( 3 )]
+position = Vector2( 386, 150 )
+audio = "doorSFX"
+
+[node name="upstairsPos" type="Position2D" parent="." index="14"]
+position = Vector2( 350, 190 )
+script = ExtResource( 4 )
+facing = 0
+
+[node name="lighting" type="AnimationPlayer" parent="." index="15"]
+autoplay = "swing"
+anims/swing = SubResource( 3 )
+[connection signal="interacted" from="toUpstairs" to="." method="change_environment" binds= [ "upstairs" ]]

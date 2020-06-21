@@ -1,0 +1,19 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/house/toilet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/house/landing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/house/shopFront.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/house/store.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/house/upstairs.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/house/mumRoom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/house/bedroom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/house/houseGame.gd" type="Script" id=9]
+
+[node name="houseGame" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Scenes" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "bedroom", "landing", "mumRoom", "shopFront", "store", "toilet", "upstairs" ), [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 5 ) ] ]
+
+[node name="Player" parent="." instance=ExtResource( 7 )]

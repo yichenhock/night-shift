@@ -1,0 +1,256 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/work/itemStock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/1980_label.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/1980v202001.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/ui/items/gum.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/items/cigarettes.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/q_button.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/items/water.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/z_button.png" type="Texture" id=10]
+[ext_resource path="res://assets/white_px.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/items/liquor.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/items/chocolate.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = -3
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "increment"
+tracks/0/type = "value"
+tracks/0/path = NodePath("income:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.537255, 0.831373, 0.454902, 1 ), Color( 0.537255, 0.831373, 0.454902, 1 ), Color( 0.537255, 0.831373, 0.454902, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("income:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 3, 1 ),
+"update": 0,
+"values": [ Vector2( 12, 50 ), Vector2( 12, 50 ), Vector2( 12, 30 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/money:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[node name="shopUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.698364
+margin_right = 0.698364
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progressBlue" type="TextureProgress" parent="VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 160, 6 )
+step = 0.0
+value = 100.0
+texture_progress = ExtResource( 11 )
+tint_under = Color( 0.141176, 0.192157, 0.2, 1 )
+tint_over = Color( 0.141176, 0.192157, 0.2, 1 )
+tint_progress = Color( 0.572549, 0.741176, 0.686275, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+
+[node name="progressRed" type="TextureProgress" parent="VBoxContainer/progressBlue"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 0.0
+texture_progress = ExtResource( 11 )
+tint_under = Color( 0.141176, 0.192157, 0.2, 1 )
+tint_progress = Color( 0.756863, 0.501961, 0.462745, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/progressBlue"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+color = Color( 0.141176, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="VBoxContainer"]
+
+[node name="money" type="Label" parent="VBoxContainer"]
+margin_top = 12.0
+margin_right = 160.0
+margin_bottom = 28.0
+rect_pivot_offset = Vector2( 10, 8 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "$69"
+
+[node name="income" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 30.0
+margin_right = 36.0
+margin_bottom = 45.9999
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.537255, 0.831373, 0.454902, 0 )
+text = "+$4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="check_stock" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+margin_bottom = -8.0
+grow_vertical = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gum" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 164.0
+margin_right = 196.0
+image = ExtResource( 5 )
+
+[node name="cig" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_right = 232.0
+image = ExtResource( 6 )
+
+[node name="water" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 236.0
+margin_right = 268.0
+image = ExtResource( 8 )
+
+[node name="liquor" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 272.0
+margin_right = 304.0
+image = ExtResource( 12 )
+
+[node name="candy" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 308.0
+margin_right = 340.0
+image = ExtResource( 9 )
+
+[node name="choc" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 344.0
+margin_right = 376.0
+image = ExtResource( 13 )
+
+[node name="news" parent="check_stock" instance=ExtResource( 1 )]
+margin_left = 380.0
+margin_right = 412.0
+image = ExtResource( 14 )
+
+[node name="ui_instructions" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_bottom = -8.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="goBack" type="HBoxContainer" parent="ui_instructions"]
+margin_right = 138.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="q" type="TextureRect" parent="ui_instructions/goBack"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="goBack" type="Label" parent="ui_instructions/goBack"]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 105.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Go back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="checkStock" type="HBoxContainer" parent="ui_instructions"]
+margin_top = 28.0
+margin_right = 138.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="z" type="TextureRect" parent="ui_instructions/checkStock"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 10 )
+expand = true
+
+[node name="checkStock" type="Label" parent="ui_instructions/checkStock"]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Show stock"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="increment" type="AnimationPlayer" parent="."]
+anims/increment = SubResource( 2 )

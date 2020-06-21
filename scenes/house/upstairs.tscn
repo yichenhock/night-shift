@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/bg/upstairs.png" type="Texture" id=2]
+[ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=4]
+
+
+
+
+[node name="upstairs" instance=ExtResource( 1 )]
+
+[node name="bg" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="collision" parent="." index="1"]
+bordersizeL = 10
+bordersizeR = 100
+
+[node name="toLanding" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 312, 150 )
+
+[node name="landingPos" type="Position2D" parent="." index="3"]
+position = Vector2( 296, 186 )
+script = ExtResource( 4 )
+facing = 0
+
+[node name="toBedroom" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 230, 150 )
+audio = "doorSFX"
+
+[node name="bedroomPos" type="Position2D" parent="." index="5"]
+position = Vector2( 230, 186 )
+
+[node name="toMumRoom" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 106, 150 )
+audio = "doorSFX"
+
+[node name="mumRoomPos" type="Position2D" parent="." index="7"]
+position = Vector2( 106, 186 )
+[connection signal="interacted" from="toLanding" to="." method="change_environment" binds= [ "landing" ]]
+[connection signal="interacted" from="toBedroom" to="." method="change_environment" binds= [ "bedroom" ]]
+[connection signal="interacted" from="toMumRoom" to="." method="change_environment" binds= [ "mumRoom" ]]

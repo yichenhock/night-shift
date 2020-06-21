@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/bg/dream/dream_layer0.png" type="Texture" id=1]
+[ext_resource path="res://assets/bg/dream/dream_moon.png" type="Texture" id=2]
+[ext_resource path="res://assets/bg/dream/dream_ground.png" type="Texture" id=4]
+[ext_resource path="res://assets/bg/dream/dream_layer2.png" type="Texture" id=5]
+[ext_resource path="res://assets/bg/dream/dream_layer1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dream/dream.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hover"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("moon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 50 ), Vector2( 0, 48 ) ]
+}
+
+[node name="dream" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="sky" type="ParallaxBackground" parent="."]
+
+[node name="bg" type="ParallaxLayer" parent="sky"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 840, 0 )
+
+[node name="clouds0" type="Sprite" parent="sky/bg"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 420, 270 )
+
+[node name="moon" type="ParallaxLayer" parent="sky"]
+motion_scale = Vector2( 0.001, 1 )
+
+[node name="moon" type="Sprite" parent="sky/moon"]
+position = Vector2( 20, 50 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="hover" type="AnimationPlayer" parent="sky/moon"]
+autoplay = "hover"
+anims/hover = SubResource( 1 )
+
+[node name="fg1" type="ParallaxLayer" parent="sky"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 840, 0 )
+
+[node name="clouds1" type="Sprite" parent="sky/fg1"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+region_rect = Rect2( 0, 0, 420, 270 )
+
+[node name="fg2" type="ParallaxLayer" parent="sky"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 840, 0 )
+
+[node name="clouds2" type="Sprite" parent="sky/fg2"]
+modulate = Color( 1, 1, 1, 0.501961 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+region_rect = Rect2( 0, 0, 420, 270 )
+
+[node name="fg3" type="ParallaxLayer" parent="sky"]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 420, 0 )
+
+[node name="ground" type="Sprite" parent="sky/fg3"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Viginette" type="Sprite" parent="CanvasLayer"]
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 370, 160 )
+walk_speed = 100.0
+smooth_movement = true
+using_camera = true

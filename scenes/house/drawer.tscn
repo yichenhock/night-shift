@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/bg/store/drawer.png" type="Texture" id=1]
+[ext_resource path="res://scenes/work/itemStock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/items/gum.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/items/chocolate.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/items/cigarettes.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/items/liquor.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/items/water.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/x_button.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=11]
+[ext_resource path="res://scenes/house/drawer.gd" type="Script" id=12]
+
+[node name="drawer" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.141176, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -193.0
+margin_top = -100.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox1" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -16.0
+margin_right = 142.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gum" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+image = ExtResource( 3 )
+
+[node name="cig" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 42.0
+margin_right = 74.0
+image = ExtResource( 5 )
+
+[node name="water" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 84.0
+margin_right = 116.0
+image = ExtResource( 8 )
+
+[node name="liquor" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 126.0
+margin_right = 158.0
+image = ExtResource( 6 )
+
+[node name="candy" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 168.0
+margin_right = 200.0
+image = ExtResource( 7 )
+
+[node name="choc" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 210.0
+margin_right = 242.0
+image = ExtResource( 4 )
+
+[node name="news" parent="HBox1" instance=ExtResource( 2 )]
+visible = true
+margin_left = 252.0
+margin_right = 284.0
+image = ExtResource( 9 )
+
+[node name="HBox2" type="HBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 96.0
+margin_bottom = 24.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBox2"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="HBox2"]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 96.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 11 )
+text = "Return"

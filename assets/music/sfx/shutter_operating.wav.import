@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shutter_operating.wav-16068fff7df1586062ce6aa2f1a9ea82.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/shutter_operating.wav"
+dest_files=[ "res://.import/shutter_operating.wav-16068fff7df1586062ce6aa2f1a9ea82.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

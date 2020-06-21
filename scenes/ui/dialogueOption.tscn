@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ui/dialogueOption.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/customText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ui/optionsbubble.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/indicator.png" type="Texture" id=5]
+
+[node name="dialogueOption" type="TextureButton"]
+margin_right = 80.0
+margin_bottom = 24.0
+grow_horizontal = 0
+rect_min_size = Vector2( 80, 24 )
+size_flags_horizontal = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+patch_margin_left = 7
+patch_margin_top = 3
+patch_margin_right = 7
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 3.0
+margin_right = -7.0
+margin_bottom = -3.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicator" type="TextureRect" parent="HBox"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_right = 8.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 8, 8 )
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="text" parent="HBox" instance=ExtResource( 3 )]
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_right = 66.0
+margin_bottom = 18.0
+text = "talk"
+[connection signal="focus_entered" from="." to="." method="_on_dialogueOption_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_dialogueOption_focus_exited"]

@@ -1,0 +1,270 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/day/itemBuy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/q_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/items/water.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/items/chocolate.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/items/liquor.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/items/cigarettes.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/Retro Gaming.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/ui/x_button.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/items/gum.png" type="Texture" id=13]
+[ext_resource path="res://scenes/day/restock.gd" type="Script" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "flash"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/HBoxContainer2/finish:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "static"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/HBoxContainer2/finish:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="restock" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.141176, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 6.0
+rect_min_size = Vector2( 0, 80 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="VBoxContainer"]
+margin_right = 420.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Restock"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="day" type="Label" parent="VBoxContainer"]
+margin_top = 25.0
+margin_right = 420.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 25 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Day 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="money" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 420.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[center]You have [color=#deebd3]$69[/color][/center]"
+text = "You have $69"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_top = -4.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+margin_right = 420.0
+margin_bottom = 32.0
+custom_constants/separation = 8
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gum" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 74.0
+margin_right = 106.0
+focus_neighbour_left = NodePath("../news")
+focus_neighbour_right = NodePath("../cig")
+image = ExtResource( 13 )
+item_name = "Chewing gum"
+item_cost = 1
+
+[node name="cig" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 114.0
+margin_right = 146.0
+focus_neighbour_left = NodePath("../gum")
+focus_neighbour_right = NodePath("../water")
+image = ExtResource( 7 )
+item_name = "Cigarettes"
+item_cost = 5
+
+[node name="water" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 154.0
+margin_right = 186.0
+focus_neighbour_left = NodePath("../cig")
+focus_neighbour_right = NodePath("../liquor")
+image = ExtResource( 3 )
+item_name = "Bottled water"
+item_cost = 2
+
+[node name="liquor" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 194.0
+margin_right = 226.0
+focus_neighbour_left = NodePath("../water")
+focus_neighbour_right = NodePath("../candy")
+image = ExtResource( 5 )
+item_name = "Liquor"
+item_cost = 10
+
+[node name="candy" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 234.0
+margin_right = 266.0
+focus_neighbour_left = NodePath("../liquor")
+focus_neighbour_right = NodePath("../choc")
+image = ExtResource( 8 )
+item_name = "Candy"
+item_cost = 1
+
+[node name="choc" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 274.0
+margin_right = 306.0
+focus_neighbour_left = NodePath("../candy")
+focus_neighbour_right = NodePath("../news")
+image = ExtResource( 4 )
+item_name = "Chocolate bar"
+item_cost = 3
+
+[node name="news" parent="VBoxContainer2/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 314.0
+margin_right = 346.0
+focus_neighbour_left = NodePath("../choc")
+focus_neighbour_right = NodePath("../gum")
+image = ExtResource( 6 )
+item_name = "Newspaper"
+item_cost = 2
+
+[node name="description" type="Label" parent="VBoxContainer2"]
+margin_top = 36.0
+margin_right = 420.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 10 )
+custom_fonts/font = ExtResource( 11 )
+text = "Chewing gum"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+margin_top = 78.0
+margin_right = 420.0
+margin_bottom = 102.0
+size_flags_vertical = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="TextureRect" parent="VBoxContainer2/HBoxContainer2"]
+margin_left = 121.0
+margin_right = 145.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="buy" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+margin_left = 149.0
+margin_top = 1.0
+margin_right = 209.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 60, 0 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="q" type="TextureRect" parent="VBoxContainer2/HBoxContainer2"]
+margin_left = 213.0
+margin_right = 237.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="finish" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+margin_left = 241.0
+margin_top = 1.0
+margin_right = 299.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Finish"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="finishFlash" type="AnimationPlayer" parent="."]
+autoplay = "static"
+anims/flash = SubResource( 2 )
+anims/static = SubResource( 3 )

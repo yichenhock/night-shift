@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/house/collision.gd" type="Script" id=1]
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0, 135 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 0, 135 )
+
+[node name="collision" type="StaticBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shapeLeft" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 135 )
+shape = SubResource( 1 )
+
+[node name="shapeRight" type="CollisionShape2D" parent="."]
+position = Vector2( 420, 135 )
+shape = SubResource( 2 )

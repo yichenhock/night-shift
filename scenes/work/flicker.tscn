@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flicker"
+length = 6.0
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("lamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.12, 0.15, 0.17, 0.84, 0.88, 1.25, 1.27, 2.32, 2.34, 4.74, 4.78, 4.84, 4.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lamp:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.16, 0.87, 1.29, 1.46, 2.29, 2.42, 4.51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.768627 ), Color( 1, 1, 1, 0.772549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.737255 ), Color( 1, 1, 1, 0.913725 ) ]
+}
+
+[node name="flicker" type="AnimationPlayer"]
+root_node = NodePath("")
+autoplay = "flicker"
+anims/flicker = SubResource( 1 )

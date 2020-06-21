@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/ui/indicator.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ui/menuOption.gd" type="Script" id=3]
+
+[node name="menuOption" type="TextureButton"]
+margin_right = 61.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 33.0
+margin_bottom = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicator" type="TextureRect" parent="HBox"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="option" type="Label" parent="HBox"]
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="focus_entered" from="." to="." method="_on_menuOption_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_menuOption_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_menuOption_mouse_entered"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ui/items/chocolate.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item; 
+
+void fragment(){
+	vec4 bg = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float avg = (bg.r + bg.g + bg.b)/3f;
+	COLOR = vec4(avg,avg,avg,1f); // grayscale
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newpaper" type="Sprite" parent="."]
+position = Vector2( -147, -84 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="chocolate" type="Sprite" parent="."]
+position = Vector2( 124, 74 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )

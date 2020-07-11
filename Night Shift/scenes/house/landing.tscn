@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/house/landing.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/ui/items/letter_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui/items/letter_large.png" type="Texture" id=6]
 [ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=8]
 
 [node name="landing" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -27,6 +28,7 @@ position = Vector2( 154, 186 )
 
 [node name="stairs" parent="." index="4" instance=ExtResource( 7 )]
 position = Vector2( 84, 150 )
+audio = "stairsSFX"
 
 [node name="upstairsPos" type="Position2D" parent="." index="5"]
 position = Vector2( 102, 186 )
@@ -52,6 +54,7 @@ facing = 0
 
 [node name="letterInteract" parent="." index="10" instance=ExtResource( 7 )]
 position = Vector2( 347, 150 )
+audio = "pageTurnSFX"
 
 [node name="letterSmall" type="Sprite" parent="." index="11"]
 position = Vector2( 350, 246 )
@@ -80,8 +83,12 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" parent="." index="13" instance=ExtResource( 8 )]
+margin_top = -0.902496
+margin_bottom = -0.902496
 [connection signal="interacted" from="toiletDoor" to="." method="change_environment" binds= [ "toilet" ]]
-[connection signal="interacted" from="stairs" to="." method="change_environment" binds= [ "upstairs" ]]
+[connection signal="interacted" from="stairs" to="." method="_on_stairs_interacted"]
 [connection signal="interacted" from="storeDoor" to="." method="change_environment" binds= [ "store" ]]
 [connection signal="interacted" from="frontDoor" to="." method="change_environment" binds= [ "shopFront" ]]
 [connection signal="interacted" from="letterInteract" to="." method="_on_letterInteract_interacted"]

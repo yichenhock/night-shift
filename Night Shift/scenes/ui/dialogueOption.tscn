@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/ui/dialogueOption.gd" type="Script" id=1]
-[ext_resource path="res://scenes/ui/customText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/ui/optionsbubble.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/indicator.png" type="Texture" id=5]
 
@@ -19,6 +19,8 @@ __meta__ = {
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_right = 8.0
+margin_bottom = 2.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 patch_margin_left = 7
@@ -32,10 +34,9 @@ __meta__ = {
 [node name="HBox" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 7.0
 margin_top = 3.0
-margin_right = -7.0
-margin_bottom = -3.0
+margin_right = 24.0
+margin_bottom = -1.0
 size_flags_vertical = 3
 custom_constants/separation = 0
 __meta__ = {
@@ -46,15 +47,19 @@ __meta__ = {
 visible = false
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 margin_right = 8.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 8, 8 )
+margin_bottom = 21.0
+rect_min_size = Vector2( 8, 9 )
 texture = ExtResource( 5 )
 stretch_mode = 6
 
-[node name="text" parent="HBox" instance=ExtResource( 3 )]
-modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
-margin_right = 66.0
-margin_bottom = 18.0
-text = "talk"
+[node name="text" type="Label" parent="HBox"]
+margin_right = 94.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 94, 19 )
+custom_fonts/font = ExtResource( 2 )
+text = "We don't sell that to kids"
+align = 1
+valign = 1
+autowrap = true
 [connection signal="focus_entered" from="." to="." method="_on_dialogueOption_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_dialogueOption_focus_exited"]

@@ -56,7 +56,10 @@ func show_options(text, left=false):
 	block() 
 	
 func block(): 
+	$AnimationPlayer.play("idle")
 	set_physics_process(false)
+	set_process_input(false)
 	
 func unblock(): 
 	set_physics_process(true)
+	set_process_input(true)

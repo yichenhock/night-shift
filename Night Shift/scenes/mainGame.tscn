@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/mainGame.gd" type="Script" id=1]
 [ext_resource path="res://shaders/mirage.shader" type="Shader" id=2]
@@ -13,7 +13,10 @@
 [ext_resource path="res://assets/textures/grain_texture.jpg" type="Texture" id=11]
 [ext_resource path="res://scenes/day/restock.tscn" type="PackedScene" id=12]
 [ext_resource path="res://shaders/invert.shader" type="Shader" id=13]
-[ext_resource path="res://shaders/chromaticShift.shader" type="Shader" id=14]
+[ext_resource path="res://assets/textures/glitch0.jpg" type="Texture" id=14]
+[ext_resource path="res://shaders/mpegArtifacts.shader" type="Shader" id=15]
+[ext_resource path="res://shaders/chromaticShift.shader" type="Shader" id=16]
+[ext_resource path="res://shaders/chromaticGlitch.shader" type="Shader" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -38,16 +41,38 @@ shader_param/stretch = 0.5
 shader_param/flashing = 0.01
 shader_param/grain = ExtResource( 11 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 13 )
 
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 16 )
+shader_param/AMPLITUDE = 0.1
+shader_param/SPEED = 5.0
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 17 )
+
 [sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 14 )
+shader = ExtResource( 15 )
+shader_param/screen_size = Vector2( 420, 270 )
+shader_param/glitch_texture = ExtResource( 14 )
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+void fragment(){
+    // vec2 uv = fragCoord.xy / iResolution.xy;
+    COLOR = texture(iChannel0, SCREEN_UV) * texture(iChannel1, SCREEN_UV);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
 
 [node name="mainGame" type="Node"]
 script = ExtResource( 1 )
 
 [node name="testImage" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.902466
@@ -101,7 +126,6 @@ __meta__ = {
 }
 
 [node name="chromaticAbberation" type="BackBufferCopy" parent="CanvasLayer/shaders"]
-visible = false
 copy_mode = 2
 rect = Rect2( 0, 0, 420, 270 )
 
@@ -138,7 +162,7 @@ copy_mode = 2
 rect = Rect2( 0, 0, 420, 270 )
 
 [node name="invert" type="ColorRect" parent="CanvasLayer/shaders/invert"]
-material = SubResource( 6 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.630249
@@ -156,7 +180,7 @@ copy_mode = 2
 rect = Rect2( 0, 0, 420, 270 )
 
 [node name="chromaticShift" type="ColorRect" parent="CanvasLayer/shaders/chromaticShift"]
-material = SubResource( 8 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.630249
@@ -169,11 +193,48 @@ __meta__ = {
 }
 
 [node name="chromaticGlitch" type="BackBufferCopy" parent="CanvasLayer/shaders"]
+visible = false
 copy_mode = 2
 rect = Rect2( 0, 0, 420, 270 )
 
 [node name="chromaticGlitch" type="ColorRect" parent="CanvasLayer/shaders/chromaticGlitch"]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.630249
+margin_top = -0.630249
+margin_right = -0.630249
+margin_bottom = -0.630249
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mpegArtifacts" type="BackBufferCopy" parent="CanvasLayer/shaders"]
+visible = false
+copy_mode = 2
+rect = Rect2( 0, 0, 420, 270 )
+
+[node name="mpegArtifacts" type="ColorRect" parent="CanvasLayer/shaders/mpegArtifacts"]
 material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.73828
+margin_top = -0.630249
+margin_right = -1.73828
+margin_bottom = -0.630249
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="liquidGlitch" type="BackBufferCopy" parent="CanvasLayer/shaders"]
+visible = false
+copy_mode = 2
+rect = Rect2( 0, 0, 420, 270 )
+
+[node name="liquidGlitch" type="ColorRect" parent="CanvasLayer/shaders/liquidGlitch"]
+material = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.630249

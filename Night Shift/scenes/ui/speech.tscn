@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/ui/speech.gd" type="Script" id=2]
 [ext_resource path="res://assets/ui/speechbubble.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ui/customText.tscn" type="PackedScene" id=4]
 
 [node name="speech" type="Control"]
-margin_right = 64.0
-margin_bottom = 62.0
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 61.0
+margin_bottom = 22.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 64, 62 )
@@ -17,9 +18,11 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-anchor_right = 0.5
-anchor_bottom = 0.5
-rect_min_size = Vector2( 32, 32 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -93.0
+margin_bottom = -42.0
+rect_min_size = Vector2( 32, 20 )
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 patch_margin_left = 8
@@ -31,19 +34,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="dialogue" parent="." instance=ExtResource( 4 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 9.0
-margin_right = -3.0
-margin_bottom = -12.0
-rect_min_size = Vector2( 32, 32 )
-custom_fonts/normal_font = ExtResource( 1 )
+margin_left = 8.0
+margin_top = 10.0
+margin_right = -6.99999
+margin_bottom = 12.0
+text = "Hey wassup"
 scroll_active = false
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="dialogue" parent="." instance=ExtResource( 4 )]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+[connection signal="character_displayed" from="dialogue" to="." method="_on_dialogue_character_displayed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

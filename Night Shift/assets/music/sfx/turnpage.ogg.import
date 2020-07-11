@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/turnpage.ogg-d377ed406f08786b9c270c2c2f325f67.oggstr"
+
+[deps]
+
+source_file="res://assets/music/sfx/turnpage.ogg"
+dest_files=[ "res://.import/turnpage.ogg-d377ed406f08786b9c270c2c2f325f67.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

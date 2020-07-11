@@ -21,5 +21,5 @@ func stop_all():
 		if node.get_class() == "AudioStreamPlayer":
 			node.stop()
 
-func fade_out(): 
+func fade_out(duration): 
 	pass

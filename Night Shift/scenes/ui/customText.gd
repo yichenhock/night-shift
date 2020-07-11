@@ -3,6 +3,7 @@ enum VAlign {TOP, CENTER, BOTTOM}
 export(VAlign) var v_align = VAlign.TOP setget set_v_align
 export var delay = 0.1
 signal fully_displayed()
+signal character_displayed()
 const char_delays = {
 	".": 5, 
 	",": 3,
@@ -31,6 +32,7 @@ func _on_typeTimer_timeout():
 
 func type_character(): 
 	visible_characters+=1
+	emit_signal("character_displayed")
 	
 func wait_for_next_character(): 
 	if visible_characters == get_text().length(): 
@@ -39,7 +41,7 @@ func wait_for_next_character():
 	var next_character = get_text()[visible_characters-1] 
 	var char_delay = delay
 	if next_character in char_delays: 
-		char_delay = char_delays[next_character]
+		char_delay = char_delays[next_character]*delay
 		
 	$typeTimer.start(char_delay) 
 	
@@ -62,4 +64,5 @@ func _unhandled_input(event):
 			get_tree().set_input_as_handled()
 			percent_visible = 1
 			emit_signal("fully_displayed")
+			emit_signal("character_displayed")
 

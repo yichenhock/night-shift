@@ -2,7 +2,7 @@ extends Control
 var n = 0
 signal change_state(new_state)
 var text = [
-	"hi my name\nis steve",
+	"I opened a shop recently. Things havent been going so well financially",
 	"steve was a nice man",
 	"until i killed him...", 
 	"lmao"
@@ -38,10 +38,10 @@ func _input(event):
 			$indicatorAnimation.play("still")
 
 func _on_text_fully_displayed():
-	if Data.get_data("firstText",true): 
-		$indicatorAnimation.play("transition")
-		$indicatorAnimation.queue("bob")
-		Data.set_data("firstText", false)
-	else: 
+	if not Data.get_data("firstText",true): 
+#		$indicatorAnimation.play("transition")
+#		$indicatorAnimation.queue("bob")
+#		Data.set_data("firstText", false)
+#	else: 
 		$indicatorAnimation.queue("bob")
 	

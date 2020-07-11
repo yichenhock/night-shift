@@ -20,8 +20,11 @@ func _process(delta): # delta in seconds
 func _on_newGame_pressed():
 	disable_menu(true)
 	$shutterAnimation.play("shutterClose")
-	$fadeAnimation.queue("fadeOut")
-	yield($fadeAnimation,"animation_finished")
+	yield($shutterAnimation,"animation_finished")
+#	get_parent().fade_in_out(5,0.5) 
+#	yield(get_parent(),"f")
+	$ColorRect.fade_out()
+	yield($ColorRect,"fade_out_finished")
 	emit_signal("change_state","monologue")
 
 func _on_continue_pressed():

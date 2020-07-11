@@ -1,112 +1,73 @@
-shader_type canvas_item; 
+/*
+ * MIT License
+ * Copyright © Etienne 'Eethe' Orlhac
+ * 07/08/2015
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining 
+ * a copy of this software and associated documentation files (the “Software”), 
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the Software 
+ * is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ * The Software is provided “as is”, without warranty of any kind, 
+ * express or implied, including but not limited to the warranties of merchantability, 
+ * fitness for a particular purpose and noninfringement. In no event shall the authors 
+ * or copyright holders be liable for any claim, damages or other liability, whether in an 
+ * action of contract, tort or otherwise, arising from, out of or in connection with 
+ * the software or the use or other dealings in the Software.
+ */
+shader_type canvas_item;
+uniform float AMPLITUDE = .1;
+uniform float SPEED = 5.0;
 
+vec4 rgbShift( in vec2 p , in vec4 shift, in sampler2D tex) {
+    shift *= 2.0*shift.w - 1.0;
+    vec2 rs = vec2(shift.x,-shift.y);
+    vec2 gs = vec2(shift.y,-shift.z);
+    vec2 bs = vec2(shift.z,-shift.x);
 
-float sat( float t ) {
-	return clamp( t, 0.0, 1.0 );
+    float r = texture(tex, p+rs).x;
+    float g = texture(tex, p+gs).y;
+    float b = texture(tex, p+bs).z;
+
+    return vec4(r,g,b,1.0);
 }
 
-vec2 sat( vec2 t ) {
-	return clamp( t, 0.0, 1.0 );
+float rand(in vec2 n) { 
+	return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
 }
 
-//remaps inteval [a;b] to [0;1]
-float remap  ( float t, float a, float b ) {
-	return sat( (t - a) / (b - a) );
+// replace with noise texture for better performance (probably) - azdcf
+vec4 rgbnoise(in vec2 p) {
+	return vec4( vec3(
+		rand(p+183.234),
+		rand(p+32.28),
+		rand(p+161.837)
+	) * rand(p), 1);
 }
 
-//note: /\ t=[0;0.5;1], y=[0;1;0]
-float linterp( float t ) {
-	return sat( 1.0 - abs( 2.0*t - 1.0 ) );
-}
-
-vec3 spectrum_offset( float t ) {
-    float t0 = 3.0 * t - 1.5;
-	return clamp( vec3( -t0, 1.0-abs(t0), t0), 0.0, 1.0);
-    /*
-	vec3 ret;
-	float lo = step(t,0.5);
-	float hi = 1.0-lo;
-	float w = linterp( remap( t, 1.0/6.0, 5.0/6.0 ) );
-	float neg_w = 1.0-w;
-	ret = vec3(lo,1.0,hi) * vec3(neg_w, w, neg_w);
-	return pow( ret, vec3(1.0/2.2) );
-*/
-}
-
-//note: [0;1]
-float rand( vec2 n ) {
-  return fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);
-}
-
-//note: [-1;1]
-float srand( vec2 n ) {
-	return rand(n) * 2.0 - 1.0;
-}
-
-float mytrunc( float x, float num_levels )
-{
-	return floor(x*num_levels) / num_levels;
-}
-vec2 mytrunc( vec2 x, float num_levels )
-{
-	return floor(x*num_levels) / num_levels;
+vec4 vec4pow( in vec4 v, in float p ) {
+    // Don't touch alpha (w), we use it to choose the direction of the shift
+    // and we don't want it to go in one direction more often than the other
+    return vec4(pow(v.x,p),pow(v.y,p),pow(v.z,p),v.w); 
 }
 
 //void mainImage( out vec4 fragColor, in vec2 fragCoord )
 //{
 void fragment() {
-	
-    float aspect = iResolution.x / iResolution.y;
-	vec2 uv = fragCoord.xy / iResolution.xy;
-    uv.y = 1.0 - uv.y;
-	
-	float time = mod(iTime, 32.0); // + modelmat[0].x + modelmat[0].z;
+    vec4 c = vec4(0.0,0.0,0.0,1.0);
 
-	float GLITCH = 0.1 + iMouse.x / iResolution.x;
-	
-    //float rdist = length( (uv - vec2(0.5,0.5))*vec2(aspect, 1.0) )/1.4;
-    //GLITCH *= rdist;
-    
-	float gnm = sat( GLITCH );
-	float rnd0 = rand( mytrunc( vec2(time, time), 6.0 ) );
-	float r0 = sat((1.0-gnm)*0.7 + rnd0);
-	float rnd1 = rand( vec2(mytrunc( uv.x, 10.0*r0 ), time) ); //horz
-	//float r1 = 1.0f - sat( (1.0f-gnm)*0.5f + rnd1 );
-	float r1 = 0.5 - 0.5 * gnm + rnd1;
-	r1 = 1.0 - max( 0.0, ((r1<1.0) ? r1 : 0.9999999) ); //note: weird ass bug on old drivers
-	float rnd2 = rand( vec2(mytrunc( uv.y, 40.0*r1 ), time) ); //vert
-	float r2 = sat( rnd2 );
+    // Elevating shift values to some high power (between 8 and 16 looks good)
+    // helps make the stuttering look more sudden
+    vec4 shift = vec4pow(rgbnoise(vec2(SPEED*TIME,2.0*SPEED*TIME/25.0 )),8.0)*vec4(AMPLITUDE,AMPLITUDE,AMPLITUDE,1.0);
 
-	float rnd3 = rand( vec2(mytrunc( uv.y, 10.0*r0 ), time) );
-	float r3 = (1.0-sat(rnd3+0.8)) - 0.1;
+    c += rgbShift(SCREEN_UV, shift, SCREEN_TEXTURE);
+	// fix transparency, and saturation for some reason
+	c.a = texture(SCREEN_TEXTURE, SCREEN_UV).a;
 
-	float pxrnd = rand( uv + time );
-
-	float ofs = 0.05 * r2 * GLITCH * ( rnd0 > 0.5 ? 1.0 : -1.0 );
-	ofs += 0.5 * pxrnd * ofs;
-
-	uv.y += 0.1 * r3 * GLITCH;
-
-    uniform int NUM_SAMPLES = 10;
-    uniform float RCP_NUM_SAMPLES_F = 1.0 / float(NUM_SAMPLES);
-    
-	vec4 sum = vec4(0.0);
-	vec3 wsum = vec3(0.0);
-	for( int i=0; i<NUM_SAMPLES; ++i )
-	{
-		float t = float(i) * RCP_NUM_SAMPLES_F;
-		uv.x = sat( uv.x + ofs * t );
-		vec4 samplecol = texture( iChannel0, uv, -10.0 );
-		vec3 s = spectrum_offset( t );
-		samplecol.rgb = samplecol.rgb * s;
-		sum += samplecol;
-		wsum += s;
-	}
-	sum.rgb /= wsum;
-	sum.a *= RCP_NUM_SAMPLES_F;
-
-    //fragColor = vec4( sum.bbb, 1.0 ); return;
-    
-	fragColor.a = sum.a;
-	fragColor.rgb = sum.rgb; // * outcol0.a;
+	COLOR = c;
 }

@@ -66,10 +66,7 @@ margin_left = 0.0
 margin_right = 0.0
 
 [node name="speech" parent="UI" instance=ExtResource( 7 )]
-margin_left = 120.0
-margin_top = 89.0
-margin_right = 184.0
-margin_bottom = 151.0
+margin_right = 49.0
 
 [node name="options" parent="UI" instance=ExtResource( 9 )]
 

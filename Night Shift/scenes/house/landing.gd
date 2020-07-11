@@ -29,4 +29,8 @@ func show_hide_interactables(state):
 	$storeDoor.active = state
 	$frontDoor.active = state
 
-	
+
+func _on_stairs_interacted():
+	$ColorRect.fade_out()
+	yield($ColorRect,"fade_finished")
+	change_environment("upstairs")

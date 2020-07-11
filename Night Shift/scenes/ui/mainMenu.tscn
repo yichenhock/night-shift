@@ -25,16 +25,16 @@
 [ext_resource path="res://assets/ui/main_menu/slider.png" type="Texture" id=23]
 [ext_resource path="res://assets/ui/main_menu/slider_grabber.png" type="Texture" id=24]
 [ext_resource path="res://assets/ui/main_menu/slider_grabber_hover.png" type="Texture" id=25]
+[ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=26]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 23 )
 region_rect = Rect2( 0, 0, 41, 3 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.184314, 0.247059, 0.258824, 1 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "shutterClose"
+[sub_resource type="Animation" id=7]
 length = 1.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("shutter:frame")
@@ -61,7 +61,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("shutter:frame")
@@ -86,34 +86,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "fadeOut"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.001, 4.6, 6 ),
-"transitions": PoolRealArray( 1, 0.5, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.141176, 0.192157, 0.2, 1 ), Color( 0.141176, 0.192157, 0.2, 0 ), Color( 0.141176, 0.192157, 0.2, 1 ), Color( 0.141176, 0.192157, 0.2, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [node name="mainMenu" type="Control"]
@@ -360,8 +332,8 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 82, 16 )
 custom_icons/grabber_highlight = ExtResource( 25 )
 custom_icons/grabber = ExtResource( 24 )
-custom_styles/slider = SubResource( 4 )
-custom_styles/grabber_area = SubResource( 5 )
+custom_styles/slider = SubResource( 5 )
+custom_styles/grabber_area = SubResource( 6 )
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -438,23 +410,15 @@ __meta__ = {
 }
 
 [node name="shutterAnimation" type="AnimationPlayer" parent="."]
-anims/shutterClose = SubResource( 1 )
-anims/shutterOpen = SubResource( 2 )
+anims/shutterClose = SubResource( 7 )
+anims/shutterOpen = SubResource( 4 )
 
 [node name="shutterSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color( 0.141176, 0.192157, 0.2, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="fadeAnimation" type="AnimationPlayer" parent="."]
-anims/fadeOut = SubResource( 3 )
+[node name="ColorRect" parent="." instance=ExtResource( 26 )]
+fade_in_time = 0.0
+fade_out_time = 4.0
 [connection signal="pressed" from="VBox/newGame" to="." method="_on_newGame_pressed"]
 [connection signal="pressed" from="VBox/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBox/options" to="." method="_on_options_pressed"]

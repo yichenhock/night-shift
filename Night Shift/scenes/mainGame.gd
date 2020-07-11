@@ -1,5 +1,5 @@
 extends Node
-
+signal fully_faded
 var current_scene = null
 
 func _ready():

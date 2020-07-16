@@ -1,7 +1,7 @@
 extends RichTextLabel
 enum VAlign {TOP, CENTER, BOTTOM}
 export(VAlign) var v_align = VAlign.TOP setget set_v_align
-export var delay = 0.1
+export var delay = 0.05
 signal fully_displayed()
 signal character_displayed()
 const char_delays = {

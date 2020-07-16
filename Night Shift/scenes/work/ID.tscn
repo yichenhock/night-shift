@@ -1,0 +1,171 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/ui/id/empty_note.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/pascalpixel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/ui/id/driving-female.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/id/george.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/id/provisional-male.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/id/driving-male.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/id/vutaro.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/1980_label.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/ui/x_button.png" type="Texture" id=9]
+[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=10]
+
+[node name="ID" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Note" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.17
+margin_top = -105.682
+margin_right = 1.82959
+margin_bottom = 2.31833
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Note"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 11.0
+margin_right = -10.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "Dear Mr Shopkeeper, 
+    I have given permission for my child to buy cigarettes on my behalf. 
+    ~ Toby's mother x"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DLWoman" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -97.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DLMan" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -97.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="George" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -97.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PDLAny" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -97.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vutaro" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -97.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Details" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 158.0
+margin_top = 80.0
+margin_right = -124.0
+margin_bottom = -65.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "1. NOMAN
+2. VUTARO
+3. 11.03.1976
+4. XXXXXX
+5. XXXXXX
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -32.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 0, 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 75.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Back"

@@ -8,7 +8,7 @@ func _ready():
 		item.visible = false
 	$UI/options/buttons/option1.grab_focus()
 	$UI/speech.speech_pos = $customer.get_node("speech_pos").global_position
-	$UI/speech.show_speech("Hey wassup yall my name is nawfkj. and awieuh djif weuhuh idk what this is but thanks for listening to my ted talk, hope yall was all listening uwu everything lolololol")
+	$UI/speech.show_speech("It's been a long day, I need a fag.")
 	
 func _input(event):
 	if event.is_action_pressed("z"): # Show 

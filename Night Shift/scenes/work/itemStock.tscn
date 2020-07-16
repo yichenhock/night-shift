@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/fonts/1980_1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/work/itemStock.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "hide"
 length = 0.1
 tracks/0/type = "value"
@@ -32,8 +32,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "show"
+[sub_resource type="Animation" id=2]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -104,5 +103,5 @@ __meta__ = {
 }
 
 [node name="showHide" type="AnimationPlayer" parent="."]
-anims/hide = SubResource( 2 )
-anims/show = SubResource( 1 )
+anims/hide = SubResource( 1 )
+anims/show = SubResource( 2 )

@@ -90,3 +90,6 @@ margin_right = 49.0
 [node name="options" parent="UI" instance=ExtResource( 9 )]
 
 [node name="radio" parent="UI" instance=ExtResource( 8 )]
+visible = false
+[connection signal="radio_pressed" from="UI/shop_ui" to="." method="_on_shop_ui_radio_pressed"]
+[connection signal="returned" from="UI/radio" to="." method="_on_radio_returned"]

@@ -48,21 +48,18 @@ buttons_path = NodePath("../buttons")
 visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 0.666667 )
 scale = Vector2( 2, 2 )
-z_index = 10
 texture = ExtResource( 4 )
 
 [node name="circle1" type="Sprite" parent="bubbles"]
 visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 0.764706 )
 scale = Vector2( 2, 2 )
-z_index = 10
 texture = ExtResource( 4 )
 
 [node name="circle2" type="Sprite" parent="bubbles"]
 visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 1 )
 scale = Vector2( 2, 2 )
-z_index = 10
 texture = ExtResource( 4 )
 
 [node name="bubblesEnd" type="Position2D" parent="bubbles"]

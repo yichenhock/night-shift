@@ -27,7 +27,7 @@
 [ext_resource path="res://assets/ui/main_menu/slider_grabber_hover.png" type="Texture" id=25]
 [ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=26]
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 23 )
 region_rect = Rect2( 0, 0, 41, 3 )
 
@@ -332,7 +332,7 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 82, 16 )
 custom_icons/grabber_highlight = ExtResource( 25 )
 custom_icons/grabber = ExtResource( 24 )
-custom_styles/slider = SubResource( 5 )
+custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area = SubResource( 2 )
 max_value = 1.0
 step = 0.01

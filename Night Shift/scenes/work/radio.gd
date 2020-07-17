@@ -1,4 +1,5 @@
 extends Control
+signal returned()
 var radio_on = false
 var n = 0
 var current_channel = "000.00"
@@ -83,3 +84,13 @@ func play_radio():
 func stop_radio(): 
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Radio"),true)
 	
+func _on_volSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Radio"), linear2db(value))
+	Data.set_data("volume",value)
+
+func _input(event): 
+	if visible: 
+		get_tree().set_input_as_handled() #this stops other _input from being triggered by this event
+		if event.is_action_pressed("ui_accept"): 
+			emit_signal("returned")
+			visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/music/sfx/door_close.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/Audio.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/music/sfx/menu_accept.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/music/sfx/turnpage.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/music/sfx/stairs.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/music/sfx/radio_power_btn.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/sfx/radio_keypad.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/bgm/radio_static.wav" type="AudioStream" id=12]
 
 [node name="Audio" type="Node"]
 script = ExtResource( 2 )
@@ -39,3 +42,13 @@ stream = ExtResource( 8 )
 
 [node name="stairsSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="radioPowerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="radioKeypadSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="radioStaticBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "Radio"

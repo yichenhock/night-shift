@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bg/store/store.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=9]
 [ext_resource path="res://assets/fonts/1980_label.tres" type="DynamicFont" id=10]
 [ext_resource path="res://scenes/house/drawer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/bg/store/radio.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close"
@@ -220,7 +221,13 @@ facing = 0
 anims/hideMoney = SubResource( 3 )
 anims/showMoney = SubResource( 4 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="12"]
+[node name="radio" type="Sprite" parent="." index="12"]
+position = Vector2( 334, 86 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+hframes = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="13"]
 
 [node name="drawer" parent="CanvasLayer" index="0" instance=ExtResource( 11 )]
 visible = false

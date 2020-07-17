@@ -1,8 +1,73 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/ui/radio.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/radio/btn1.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/radio/btn2.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/radio/btn3.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/radio/btn4.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/radio/btn0.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/radio/btn9.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/radio/btn7.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/radio/btn5.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/radio/btn6.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/radio/btn8.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/pascalpixel.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/ui/radio/btn7-pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/radio/btn3-pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/radio/btn5-pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui/radio/btn9-pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui/radio/btn8-pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/ui/radio/btn6-pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/ui/radio/btn2-pressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/ui/radio/btn4-pressed.png" type="Texture" id=20]
+[ext_resource path="res://assets/ui/radio/btn1-pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/ui/radio/btn0-pressed.png" type="Texture" id=22]
+[ext_resource path="res://assets/ui/radio/display-on.png" type="Texture" id=23]
+[ext_resource path="res://assets/ui/radio/display-off.png" type="Texture" id=24]
+[ext_resource path="res://assets/fonts/monospace.tres" type="DynamicFont" id=25]
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=26]
+[ext_resource path="res://assets/ui/x_button.png" type="Texture" id=27]
+[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/ui/radio/radio-slider.png" type="Texture" id=29]
+[ext_resource path="res://assets/ui/radio/radio-slider-grabber.png" type="Texture" id=30]
+[ext_resource path="res://assets/ui/radio/power-btn.png" type="Texture" id=31]
+[ext_resource path="res://assets/ui/radio/power-btn-pressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/ui/radio/indicator-off.png" type="Texture" id=33]
+[ext_resource path="res://assets/ui/radio/indicator-on.png" type="Texture" id=34]
+[ext_resource path="res://scenes/work/radio.gd" type="Script" id=35]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 78, 6 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/path = NodePath("displayText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
 
 [node name="radio" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+pause_mode = 2
+modulate = Color( 0.141176, 0.192157, 0.2, 0.313726 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -13,8 +78,339 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
-margin_top = 26.0
+margin_top = 20.0
 margin_right = -209.0
-margin_bottom = -137.0
+margin_bottom = -143.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="displayOn" type="TextureRect" parent="."]
+margin_left = 58.0
+margin_top = 110.0
+margin_right = 109.0
+margin_bottom = 128.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="displayOff" type="TextureRect" parent="."]
+margin_left = 58.0
+margin_top = 110.0
+margin_right = 109.0
+margin_bottom = 128.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="displayText" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 122.0
+margin_right = 142.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 25 )
+custom_colors/font_color = Color( 0.294118, 0.34902, 0.360784, 1 )
+text = "---.--"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fm" type="Label" parent="."]
+margin_left = 143.0
+margin_top = 128.0
+margin_right = 158.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.294118, 0.34902, 0.360784, 1 )
+text = "FM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="power" type="TextureButton" parent="."]
+margin_left = 220.0
+margin_top = 104.0
+margin_right = 234.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 14, 14 )
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 32 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicatorOff" type="TextureRect" parent="."]
+margin_left = 201.0
+margin_top = 106.0
+margin_right = 209.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 8, 8 )
+texture = ExtResource( 33 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicatorOn" type="TextureRect" parent="."]
+visible = false
+margin_left = 201.0
+margin_top = 106.0
+margin_right = 209.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 8, 8 )
+texture = ExtResource( 34 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="keypad" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -7.0
+margin_right = 30.0
+margin_bottom = 85.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn1" type="TextureButton" parent="keypad"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 21 )
+expand = true
+
+[node name="btn2" type="TextureButton" parent="keypad"]
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 19 )
+expand = true
+
+[node name="btn3" type="TextureButton" parent="keypad"]
+margin_left = 48.0
+margin_right = 68.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 14 )
+expand = true
+
+[node name="btn4" type="TextureButton" parent="keypad"]
+margin_top = 24.0
+margin_right = 20.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="btn5" type="TextureButton" parent="keypad"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 44.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 15 )
+expand = true
+
+[node name="btn6" type="TextureButton" parent="keypad"]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 68.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 18 )
+expand = true
+
+[node name="btn7" type="TextureButton" parent="keypad"]
+margin_top = 48.0
+margin_right = 20.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 13 )
+expand = true
+
+[node name="btn8" type="TextureButton" parent="keypad"]
+margin_left = 24.0
+margin_top = 48.0
+margin_right = 44.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 17 )
+expand = true
+
+[node name="btn9" type="TextureButton" parent="keypad"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 68.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 16 )
+expand = true
+
+[node name="Control" type="Control" parent="keypad"]
+margin_top = 72.0
+margin_right = 20.0
+margin_bottom = 92.0
+
+[node name="btn0" type="TextureButton" parent="keypad"]
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 44.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 22 )
+expand = true
+
+[node name="notes" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -126.0
+margin_top = 81.0
+margin_right = -43.0
+margin_bottom = -52.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="piano" type="Label" parent="notes"]
+margin_right = 83.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "124.11 piano"
+
+[node name="jazz" type="Label" parent="notes"]
+margin_top = 16.0
+margin_right = 83.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "85.43 jazz"
+
+[node name="lo-fi" type="Label" parent="notes"]
+margin_top = 32.0
+margin_right = 83.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "95.36 lo-fi"
+
+[node name="pop" type="Label" parent="notes"]
+margin_top = 48.0
+margin_right = 83.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "104.24 pop"
+
+[node name="pop2" type="Label" parent="notes"]
+margin_top = 64.0
+margin_right = 83.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
+text = "111.12 ???"
+
+[node name="volume" type="HBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 62.0
+margin_top = 27.0
+margin_right = 160.0
+margin_bottom = 43.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vol" type="Label" parent="volume"]
+margin_right = 16.0
+margin_bottom = 16.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.478431, 0.533333, 0.52549, 1 )
+text = "Vol"
+
+[node name="volSlider" type="HSlider" parent="volume"]
+margin_left = 20.0
+margin_right = 98.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 60, 0 )
+custom_icons/grabber_disabled = ExtResource( 30 )
+custom_icons/grabber_highlight = ExtResource( 30 )
+custom_icons/grabber = ExtResource( 30 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area = SubResource( 2 )
+value = 80.0
+
+[node name="back" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -83.0
+margin_top = -30.0
+margin_bottom = -6.0
+rect_min_size = Vector2( 0, 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="back"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 27 )
+expand = true
+
+[node name="back" type="Label" parent="back"]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 75.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "Back"
+
+[node name="radioTimeout" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="flashDisplay" type="AnimationPlayer" parent="."]
+anims/flash = SubResource( 3 )
+[connection signal="pressed" from="power" to="." method="_on_power_pressed"]
+[connection signal="pressed" from="keypad/btn1" to="." method="set_display" binds= [ 1 ]]
+[connection signal="pressed" from="keypad/btn2" to="." method="set_display" binds= [ 2 ]]
+[connection signal="pressed" from="keypad/btn3" to="." method="set_display" binds= [ 3 ]]
+[connection signal="pressed" from="keypad/btn4" to="." method="set_display" binds= [ 4 ]]
+[connection signal="pressed" from="keypad/btn5" to="." method="set_display" binds= [ 5 ]]
+[connection signal="pressed" from="keypad/btn6" to="." method="set_display" binds= [ 6 ]]
+[connection signal="pressed" from="keypad/btn7" to="." method="set_display" binds= [ 7 ]]
+[connection signal="pressed" from="keypad/btn8" to="." method="set_display" binds= [ 8 ]]
+[connection signal="pressed" from="keypad/btn9" to="." method="set_display" binds= [ 9 ]]
+[connection signal="pressed" from="keypad/btn0" to="." method="set_display" binds= [ 0 ]]
+[connection signal="timeout" from="radioTimeout" to="." method="_on_radioTimeout_timeout"]

@@ -63,3 +63,4 @@ valign = 1
 autowrap = true
 [connection signal="focus_entered" from="." to="." method="_on_dialogueOption_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_dialogueOption_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_dialogueOption_mouse_entered"]

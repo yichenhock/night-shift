@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/footsteps-approaching.wav-52ecc7987ed8c38f9465e01ab39d041b.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/footsteps-approaching.wav"
+dest_files=[ "res://.import/footsteps-approaching.wav-52ecc7987ed8c38f9465e01ab39d041b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

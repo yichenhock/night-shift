@@ -1,0 +1,303 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/ui/indicator.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ui/prologue.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/customLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prologue/newpaper.png" type="Texture" id=5]
+[ext_resource path="res://assets/prologue/newpaper_pointed.png" type="Texture" id=6]
+[ext_resource path="res://assets/prologue/newspaper_closeup.png" type="Texture" id=7]
+[ext_resource path="res://assets/prologue/prologue-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/music/sfx/newspaper-drop.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/sfx/envelope-drop.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/sfx/footsteps-approaching.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/prologue/gradient.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=8]
+resource_name = "bigBlob"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 10 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "blob"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "blobGrow"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "feet"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 19 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "feetSansNews"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23, 22 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "mailDrop"
+length = 7.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("mainBG:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14, 13, 12, 15, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 19, 18, 19, 20, 19 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0, 1.02, 1.8 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "bob"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("indicator:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 206, 256 ), Vector2( 206, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("indicator:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Color( 0.870588, 0.921569, 0.827451, 0.588235 ), Color( 0.870588, 0.921569, 0.827451, 0.392157 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "still"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("indicator:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 206, 256 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("indicator:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.870588, 0.921569, 0.827451, 0.588235 ) ]
+}
+
+[node name="prologue" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="mainBG" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+hframes = 24
+frame = 19
+
+[node name="bgAnim" type="AnimationPlayer" parent="."]
+autoplay = "blob"
+anims/bigBlob = SubResource( 8 )
+anims/blob = SubResource( 7 )
+anims/blobGrow = SubResource( 9 )
+anims/feet = SubResource( 11 )
+anims/feetSansNews = SubResource( 12 )
+anims/mailDrop = SubResource( 10 )
+
+[node name="newspaper" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newspaperPointed" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newspaperCloseUp" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" parent="UI" instance=ExtResource( 9 )]
+visible = false
+margin_top = 0.0
+margin_bottom = 0.0
+fade_in_time = 5.0
+fade_out_time = 0.0
+
+[node name="gradient" type="TextureRect" parent="UI"]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" parent="UI" instance=ExtResource( 4 )]
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -42.0
+margin_right = -10.0
+margin_bottom = -28.0
+custom_fonts/font = ExtResource( 1 )
+text = "Some text here"
+align = 1
+autowrap = true
+
+[node name="indicator" type="TextureRect" parent="UI"]
+modulate = Color( 0.870588, 0.921569, 0.827451, 0.588235 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -3.99998
+margin_top = -14.0
+margin_right = 4.00002
+margin_bottom = -5.99823
+rect_min_size = Vector2( 8, 8 )
+rect_pivot_offset = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicatorAnimation" type="AnimationPlayer" parent="UI"]
+autoplay = "still"
+anims/bob = SubResource( 1 )
+anims/still = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+[connection signal="fully_displayed" from="UI/text" to="." method="_on_text_fully_displayed"]

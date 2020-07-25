@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/customLabel.gd" type="Script" id=1]
+
+[node name="customLabel" type="Label"]
+margin_right = 72.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="typeTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="typeTimer" to="." method="_on_typeTimer_timeout"]

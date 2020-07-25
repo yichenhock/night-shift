@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/music/sfx/door_close.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/Audio.gd" type="Script" id=2]
 [ext_resource path="res://assets/music/sfx/front_door.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/music/sfx/shutter_operating.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/music/bgm/bleeding_out2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/sfx/quarantine_dream.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/music/sfx/menu_click_2.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/music/sfx/menu_accept.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/music/sfx/turnpage.ogg" type="AudioStream" id=8]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/music/sfx/radio_power_btn.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/music/sfx/radio_keypad.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/music/bgm/radio_static.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/bgm/wind09.ogg" type="AudioStream" id=13]
 
 [node name="Audio" type="Node"]
 script = ExtResource( 2 )
@@ -52,3 +53,6 @@ stream = ExtResource( 11 )
 [node name="radioStaticBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 bus = "Radio"
+
+[node name="windNormal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )

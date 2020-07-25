@@ -10,7 +10,7 @@ func _ready():
 func _input(event): 
 	if visible: 
 		get_tree().set_input_as_handled() #this stops other _input rom being triggered by this event
-		if event.is_action_pressed("ui_accept"): 
+		if event.is_action_pressed("q"): 
 			emit_signal("returned")
 			visible = false
 

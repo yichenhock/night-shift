@@ -20,8 +20,10 @@ func _input(event):
 
 func _on_shop_ui_radio_pressed():
 	$UI/radio.visible = true
+	$UI/shop_ui/ui_instructions.visible = false
 	get_tree().paused = true
 
 func _on_radio_returned():
+	$UI/shop_ui/ui_instructions.visible = true
 	get_tree().paused = false
 	

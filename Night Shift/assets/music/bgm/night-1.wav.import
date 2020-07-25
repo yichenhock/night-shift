@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/night-1.wav-33da81d0282be00b9166523939775123.sample"
+
+[deps]
+
+source_file="res://assets/music/bgm/night-1.wav"
+dest_files=[ "res://.import/night-1.wav-33da81d0282be00b9166523939775123.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,15 +1,13 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/work/itemStock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/1980_label.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/ui/ui_instructions.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/1980v202001.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ui/items/gum.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui/items/cigarettes.png" type="Texture" id=6]
-[ext_resource path="res://assets/ui/q_button.png" type="Texture" id=7]
 [ext_resource path="res://assets/ui/items/water.png" type="Texture" id=8]
 [ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=9]
-[ext_resource path="res://assets/ui/z_button.png" type="Texture" id=10]
 [ext_resource path="res://assets/white_px.png" type="Texture" id=11]
 [ext_resource path="res://assets/ui/items/liquor.png" type="Texture" id=12]
 [ext_resource path="res://assets/ui/items/chocolate.png" type="Texture" id=13]
@@ -61,11 +59,25 @@ tracks/2/keys = {
 "values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/pills3.png-cc4a0884895efcd8e0b0470ae6e1fb62.stex"
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/pills2.png-f6c6a9be4fbe2c4ff897a83a6d9d3e05.stex"
+
+[sub_resource type="StreamTexture" id=5]
+load_path = "res://.import/pills1.png-8c6ffdb4c600fb5203f9b571a682e120.stex"
+
+[sub_resource type="StreamTexture" id=6]
+load_path = "res://.import/pills0.png-24d7e0e3990f874e8db4c06a8f25a303.stex"
+
 [node name="shopUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.698364
-margin_right = 0.698364
+margin_left = 1.2117
+margin_top = -0.513344
+margin_right = 1.2117
+margin_bottom = -0.513336
 script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -193,68 +205,7 @@ margin_left = 380.0
 margin_right = 412.0
 image = ExtResource( 14 )
 
-[node name="ui_instructions" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_bottom = -8.0
-grow_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="goBack" type="HBoxContainer" parent="ui_instructions"]
-margin_right = 138.0
-margin_bottom = 24.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="q" type="TextureRect" parent="ui_instructions/goBack"]
-margin_right = 24.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-texture = ExtResource( 7 )
-expand = true
-
-[node name="goBack" type="Label" parent="ui_instructions/goBack"]
-margin_left = 28.0
-margin_top = 1.0
-margin_right = 105.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
-text = "Go back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="checkStock" type="HBoxContainer" parent="ui_instructions"]
-margin_top = 28.0
-margin_right = 138.0
-margin_bottom = 52.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="z" type="TextureRect" parent="ui_instructions/checkStock"]
-margin_right = 24.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-texture = ExtResource( 10 )
-expand = true
-
-[node name="checkStock" type="Label" parent="ui_instructions/checkStock"]
-margin_left = 28.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
-text = "Show stock"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ui_instructions" parent="." instance=ExtResource( 3 )]
 
 [node name="increment" type="AnimationPlayer" parent="."]
 anims/increment = SubResource( 2 )
@@ -269,6 +220,65 @@ rect_min_size = Vector2( 22, 24 )
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pills3" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.3304
+margin_top = -90.5688
+margin_right = -15.0
+margin_bottom = -69.5688
+texture_normal = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pills2" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.3304
+margin_top = -90.5688
+margin_right = -15.0
+margin_bottom = -69.5688
+texture_normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pills1" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.3304
+margin_top = -90.5688
+margin_right = -15.0
+margin_bottom = -69.5688
+texture_normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pills0" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.3304
+margin_top = -90.5688
+margin_right = -15.0
+margin_bottom = -69.5688
+texture_normal = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

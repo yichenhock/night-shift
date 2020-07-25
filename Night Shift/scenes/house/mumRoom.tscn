@@ -15,7 +15,6 @@
 [ext_resource path="res://assets/characters/mum_idle.png" type="Texture" id=13]
 [ext_resource path="res://scenes/house/shadow.gd" type="Script" id=14]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "ecg"
 loop = true
@@ -82,12 +81,12 @@ __meta__ = {
 }
 
 [node name="spotlight" type="Sprite" parent="." index="2"]
-position = Vector2( 200, 230 )
+position = Vector2( 203.587, 228.206 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="bed_shadow" type="Sprite" parent="." index="3"]
-position = Vector2( 156, 234 )
+position = Vector2( 154.565, 234.717 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 script = ExtResource( 14 )
@@ -95,7 +94,7 @@ default_pos = Vector2( 154, 234 )
 multiplier = Vector2( -0.4, -0.4 )
 
 [node name="wc_shadow" type="Sprite" parent="." index="4"]
-position = Vector2( 298, 234 )
+position = Vector2( 296.565, 234.717 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 script = ExtResource( 14 )

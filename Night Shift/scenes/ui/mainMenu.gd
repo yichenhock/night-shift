@@ -6,9 +6,10 @@ signal change_state(new_state)
 func _ready():
 	$ColorRect.visible = false
 	$shutter.frame = 0
-	$shutterAnimation.play("shutterOpen")
-	Audio.play("mainMenuBGM")
 	$VBox/newGame.grab_focus()
+	$shutterAnimation.play("shutterOpen")
+	yield($shutterAnimation,"animation_finished")
+	Audio.play("mainMenuBGM")
 	
 func _process(delta): # delta in seconds
 	# Scroll background
@@ -25,13 +26,11 @@ func _on_newGame_pressed():
 #	yield(get_parent(),"f")
 	$ColorRect.fade_out()
 	yield($ColorRect,"fade_out_finished")
-	emit_signal("change_state","monologue")
+	emit_signal("change_state","prologue")
 
 func _on_continue_pressed():
 	disable_menu(true)
 	$shutterAnimation.play("shutterClose")
-	$fadeAnimation.queue("fadeOut")
-	yield($fadeAnimation,"animation_finished")
 
 func _on_options_pressed():
 	Audio.play("menuAcceptSFX")

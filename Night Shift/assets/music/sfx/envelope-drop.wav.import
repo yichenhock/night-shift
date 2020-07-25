@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/envelope-drop.wav-d88374d4f74084cbd0c1e5c56ae2b047.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/envelope-drop.wav"
+dest_files=[ "res://.import/envelope-drop.wav-d88374d4f74084cbd0c1e5c56ae2b047.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

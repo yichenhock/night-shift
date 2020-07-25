@@ -59,6 +59,8 @@ tracks/1/keys = {
 modulate = Color( 0.141176, 0.192157, 0.2, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -0.814499
+margin_bottom = -0.814514
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

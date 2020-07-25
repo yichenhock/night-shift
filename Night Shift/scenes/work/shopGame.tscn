@@ -45,6 +45,7 @@ tracks/0/keys = {
 }
 
 [node name="shopGame" type="Node2D"]
+scale = Vector2( 1.00148, 1 )
 script = ExtResource( 6 )
 
 [node name="bg" type="Sprite" parent="."]

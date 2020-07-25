@@ -1,0 +1,209 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/nightTransit1.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/music/bgm/night-1.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "showText"
+length = 5.0
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/N:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HBoxContainer/I:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.46 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer/G:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.74 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer/H:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.06 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HBoxContainer/T:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HBoxContainer/1:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.79 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="nightTransit1" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.141176, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.5
+margin_top = -20.0
+margin_right = 78.5
+margin_bottom = 20.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="N" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_top = 16.0
+margin_right = 6.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="I" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_left = 31.0
+margin_top = 16.0
+margin_right = 35.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_left = 60.0
+margin_top = 16.0
+margin_right = 66.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_left = 91.0
+margin_top = 16.0
+margin_right = 97.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "H"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_left = 122.0
+margin_top = 16.0
+margin_right = 128.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "T"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="HBoxContainer"]
+visible = false
+modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
+margin_left = 153.0
+margin_top = 16.0
+margin_right = 157.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/showText = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

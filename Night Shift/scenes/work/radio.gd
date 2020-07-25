@@ -13,6 +13,7 @@ var radio_channels = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	current_channel = Data.get_data("current_channel", "000.00")
 	if radio_on == false: #if power off, show in off state
 		turn_off()
 	else: 
@@ -61,6 +62,7 @@ func set_display(digit):
 			n = 0
 			changing_channel = ""
 			current_channel = $displayText.text
+			Data.set_data("current_channel", current_channel)
 			$flashDisplay.play("flash")
 			play_radio()
 
@@ -91,6 +93,6 @@ func _on_volSlider_value_changed(value):
 func _input(event): 
 	if visible: 
 		get_tree().set_input_as_handled() #this stops other _input from being triggered by this event
-		if event.is_action_pressed("ui_accept"): 
+		if event.is_action_pressed("q"): 
 			emit_signal("returned")
 			visible = false

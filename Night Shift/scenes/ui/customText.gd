@@ -1,7 +1,7 @@
 extends RichTextLabel
-enum VAlign {TOP, CENTER, BOTTOM}
-export(VAlign) var v_align = VAlign.TOP setget set_v_align
-export var delay = 0.05
+#enum VAlign {TOP, CENTER, BOTTOM}
+#export(VAlign) var v_align = VAlign.TOP setget set_v_align
+export var delay = 0.08
 signal fully_displayed()
 signal character_displayed()
 const char_delays = {
@@ -17,14 +17,14 @@ const char_delays = {
 func _ready():
 	pass # Replace with function body.
 
-func set_v_align(new_v_align):
-	v_align = new_v_align
-	if v_align == VAlign.TOP: 
-		pass
-	elif v_align == VAlign.CENTER:
-		pass
-	else: #BOTTOM
-		pass
+#func set_v_align(new_v_align):
+#	v_align = new_v_align
+#	if v_align == VAlign.TOP: 
+#		pass
+#	elif v_align == VAlign.CENTER:
+#		pass
+#	else: #BOTTOM
+#		pass
 
 func _on_typeTimer_timeout():
 	type_character()

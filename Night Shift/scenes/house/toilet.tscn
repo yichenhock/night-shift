@@ -1,30 +1,49 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/bg/toilet.png" type="Texture" id=2]
+[ext_resource path="res://assets/bg/toilet/toilet-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/house/toilet.gd" type="Script" id=4]
 [ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=5]
 
-
-
-
+[sub_resource type="Animation" id=1]
+resource_name = "lighting"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
 
 [node name="toilet" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 
 [node name="bg" parent="." index="0"]
 texture = ExtResource( 2 )
+hframes = 6
+frame = 1
 
-[node name="collision" parent="." index="1"]
+[node name="bgAnim" type="AnimationPlayer" parent="." index="1"]
+autoplay = "lighting"
+anims/lighting = SubResource( 1 )
+
+[node name="collision" parent="." index="2"]
 bordersizeL = 70
 bordersizeR = 30
 
-[node name="toLanding" parent="." index="2" instance=ExtResource( 3 )]
+[node name="toLanding" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 378, 150 )
 audio = "doorSFX"
 
-[node name="landingPos" type="Position2D" parent="." index="3"]
+[node name="landingPos" type="Position2D" parent="." index="4"]
 position = Vector2( 344, 186 )
 script = ExtResource( 5 )
 facing = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/ui/main_menu_shutter.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=2]
@@ -26,15 +26,19 @@
 [ext_resource path="res://assets/ui/main_menu/slider_grabber.png" type="Texture" id=24]
 [ext_resource path="res://assets/ui/main_menu/slider_grabber_hover.png" type="Texture" id=25]
 [ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/dream/fadeClouds.tres" type="Animation" id=27]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 23 )
 region_rect = Rect2( 0, 0, 41, 3 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.184314, 0.247059, 0.258824, 1 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 1.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("shutter:frame")
@@ -61,7 +65,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("shutter:frame")
@@ -135,11 +139,16 @@ motion_scale = Vector2( 0.7, 1 )
 motion_mirroring = Vector2( 840, 0 )
 
 [node name="clouds2" type="Sprite" parent="sky/fg2"]
-modulate = Color( 1, 1, 1, 0.501961 )
+material = SubResource( 1 )
 position = Vector2( 0, 10 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sky/fg2"]
+autoplay = "fadeClouds"
+playback_speed = 0.5
+anims/fadeClouds = ExtResource( 27 )
 
 [node name="fg3" type="ParallaxLayer" parent="sky"]
 
@@ -332,8 +341,8 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 82, 16 )
 custom_icons/grabber_highlight = ExtResource( 25 )
 custom_icons/grabber = ExtResource( 24 )
-custom_styles/slider = SubResource( 1 )
-custom_styles/grabber_area = SubResource( 2 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -363,6 +372,7 @@ rect_min_size = Vector2( 12, 12 )
 expand = true
 
 [node name="off" type="TextureRect" parent="options/HBoxContainer/fullscreenButton"]
+visible = false
 margin_right = 10.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 10, 10 )
@@ -373,7 +383,6 @@ __meta__ = {
 }
 
 [node name="on" type="TextureRect" parent="options/HBoxContainer/fullscreenButton"]
-visible = false
 margin_right = 10.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 10, 10 )
@@ -410,8 +419,8 @@ __meta__ = {
 }
 
 [node name="shutterAnimation" type="AnimationPlayer" parent="."]
-anims/shutterClose = SubResource( 3 )
-anims/shutterOpen = SubResource( 4 )
+anims/shutterClose = SubResource( 4 )
+anims/shutterOpen = SubResource( 5 )
 
 [node name="shutterSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )

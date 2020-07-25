@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/ui/ui_button.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/monospace_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/ui/ui_option.gd" type="Script" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "mouse_enter"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 0.141176, 0.192157, 0.2, 0.784314 ), Color( 0.141176, 0.192157, 0.2, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 2.0, 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.870588, 0.921569, 0.827451, 0.823529 ), Color( 0.870588, 0.921569, 0.827451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "mouse_exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 0.141176, 0.192157, 0.2, 1 ), Color( 0.141176, 0.192157, 0.2, 0.784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 8, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 0.870588, 0.921569, 0.827451, 1 ), Color( 0.870588, 0.921569, 0.827451, 0.823529 ) ]
+}
+
+[node name="ui_option" type="Label"]
+margin_top = 8.0
+margin_right = 98.0
+margin_bottom = 16.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_button" type="TextureButton" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2.0
+mouse_filter = 1
+texture_normal = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ui_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+mouse_filter = 1
+color = Color( 0.141176, 0.192157, 0.2, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ui_button"]
+anims/mouse_enter = SubResource( 2 )
+anims/mouse_exit = SubResource( 3 )
+[connection signal="mouse_entered" from="ui_button" to="ui_button" method="_on_ui_button_mouse_entered"]
+[connection signal="mouse_exited" from="ui_button" to="ui_button" method="_on_ui_button_mouse_exited"]

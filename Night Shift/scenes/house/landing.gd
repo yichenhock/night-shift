@@ -32,5 +32,5 @@ func show_hide_interactables(state):
 
 func _on_stairs_interacted():
 	$ColorRect.fade_out()
-	yield($ColorRect,"fade_finished")
+	yield($ColorRect,"fade_out_finished")
 	change_environment("upstairs")

@@ -158,49 +158,50 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
 
-[node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 180.0
-margin_top = 100.0
-margin_right = 241.0
-margin_bottom = 174.0
+[node name="title" type="Label" parent="."]
+margin_left = 131.0
+margin_top = 95.0
+margin_right = 290.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 0, 12 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+text = "N I G H T   K I O S K"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="title" type="Label" parent="VBox"]
-margin_right = 61.0
-margin_bottom = 12.0
-rect_min_size = Vector2( 0, 12 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
-text = "NIGHT SHIFT"
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 180.0
+margin_top = 117.0
+margin_right = 241.0
+margin_bottom = 183.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="newGame" parent="VBox" instance=ExtResource( 3 )]
-margin_top = 16.0
-margin_bottom = 26.0
 option_text = "New game"
 
 [node name="continue" parent="VBox" instance=ExtResource( 3 )]
-margin_top = 30.0
-margin_bottom = 40.0
+margin_top = 14.0
+margin_bottom = 24.0
 option_text = "Continue"
 
 [node name="options" parent="VBox" instance=ExtResource( 3 )]
-margin_top = 44.0
-margin_bottom = 54.0
+margin_top = 28.0
+margin_bottom = 38.0
 option_text = "Options"
 
 [node name="about" parent="VBox" instance=ExtResource( 3 )]
-margin_top = 58.0
-margin_bottom = 68.0
+margin_top = 42.0
+margin_bottom = 52.0
 option_text = "About"
 
 [node name="quit" parent="VBox" instance=ExtResource( 3 )]
-margin_top = 72.0
-margin_bottom = 82.0
+margin_top = 56.0
+margin_bottom = 66.0
 option_text = "Quit"
 
 [node name="shutter" type="Sprite" parent="."]

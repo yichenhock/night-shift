@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/player-blip.wav-9c020b5931a1d5e36c79aeb71e467056.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/blips/player-blip.wav"
+dest_files=[ "res://.import/player-blip.wav-9c020b5931a1d5e36c79aeb71e467056.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=1

@@ -32,11 +32,10 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 3.0
-margin_right = 24.0
-margin_bottom = -1.0
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 23.0
 size_flags_vertical = 3
 custom_constants/separation = 0
 __meta__ = {
@@ -47,7 +46,7 @@ __meta__ = {
 visible = false
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 margin_right = 8.0
-margin_bottom = 21.0
+margin_bottom = 19.0
 rect_min_size = Vector2( 8, 9 )
 texture = ExtResource( 5 )
 stretch_mode = 6
@@ -57,7 +56,6 @@ margin_right = 94.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 94, 19 )
 custom_fonts/font = ExtResource( 2 )
-text = "We don't sell that to kids"
 align = 1
 valign = 1
 autowrap = true

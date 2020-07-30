@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/environment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/house/landing.gd" type="Script" id=2]
 [ext_resource path="res://assets/bg/landing.png" type="Texture" id=3]
 [ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=4]
-[ext_resource path="res://assets/ui/items/letter_small.png" type="Texture" id=5]
-[ext_resource path="res://assets/ui/items/letter_large.png" type="Texture" id=6]
 [ext_resource path="res://scenes/interactable.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=8]
 
@@ -17,7 +15,7 @@ texture = ExtResource( 3 )
 
 [node name="collision" parent="." index="1"]
 bordersizeL = 78
-bordersizeR = 34
+bordersizeR = 31
 
 [node name="toiletDoor" parent="." index="2" instance=ExtResource( 7 )]
 position = Vector2( 154, 150 )
@@ -28,7 +26,6 @@ position = Vector2( 154, 186 )
 
 [node name="stairs" parent="." index="4" instance=ExtResource( 7 )]
 position = Vector2( 84, 150 )
-audio = "stairsSFX"
 
 [node name="upstairsPos" type="Position2D" parent="." index="5"]
 position = Vector2( 102, 186 )
@@ -44,7 +41,7 @@ position = Vector2( 264, 186 )
 scale = Vector2( 1, 1.02273 )
 
 [node name="frontDoor" parent="." index="8" instance=ExtResource( 7 )]
-position = Vector2( 374, 150 )
+position = Vector2( 380, 150 )
 audio = "frontdoorSFX"
 
 [node name="shopFrontPos" type="Position2D" parent="." index="9"]
@@ -52,43 +49,10 @@ position = Vector2( 360, 186 )
 script = ExtResource( 4 )
 facing = 0
 
-[node name="letterInteract" parent="." index="10" instance=ExtResource( 7 )]
-position = Vector2( 347, 150 )
-audio = "pageTurnSFX"
-
-[node name="letterSmall" type="Sprite" parent="." index="11"]
-position = Vector2( 350, 246 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
-
-[node name="UI" type="CanvasLayer" parent="." index="12"]
-
-[node name="letter" type="Control" parent="UI" index="0"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="letterLarge" type="TextureRect" parent="UI/letter" index="0"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -123.0
-margin_top = -127.0
-rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" parent="." index="13" instance=ExtResource( 8 )]
+[node name="ColorRect" parent="." index="10" instance=ExtResource( 8 )]
 margin_top = -0.902496
 margin_bottom = -0.902496
 [connection signal="interacted" from="toiletDoor" to="." method="change_environment" binds= [ "toilet" ]]
-[connection signal="interacted" from="stairs" to="." method="_on_stairs_interacted"]
+[connection signal="interacted" from="stairs" to="." method="change_environment" binds= [ "upstairs" ]]
 [connection signal="interacted" from="storeDoor" to="." method="change_environment" binds= [ "store" ]]
 [connection signal="interacted" from="frontDoor" to="." method="change_environment" binds= [ "shopFront" ]]
-[connection signal="interacted" from="letterInteract" to="." method="_on_letterInteract_interacted"]

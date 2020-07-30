@@ -17,7 +17,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 33.0
-margin_bottom = -2.0
+margin_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,18 +26,23 @@ __meta__ = {
 visible = false
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 margin_right = 8.0
-margin_bottom = 8.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 8, 8 )
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="option" type="Label" parent="HBox"]
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
-margin_bottom = 8.0
+margin_top = -1.0
+margin_right = 34.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 0, 13 )
 custom_fonts/font = ExtResource( 1 )
+text = "Option"
 __meta__ = {
 "_edit_use_anchors_": false
 }

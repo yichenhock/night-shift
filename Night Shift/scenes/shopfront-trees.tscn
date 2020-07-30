@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/house/shopfront-trees.tres" type="Animation" id=1]
+
+[node name="background" type="AnimationPlayer"]
+autoplay = "trees"
+anims/trees = ExtResource( 1 )

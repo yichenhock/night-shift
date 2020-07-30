@@ -1,14 +1,13 @@
 tool
 extends TextureButton
-var text = "" setget set_text
+export(String) var text = "" setget set_text
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
 func set_text(new_text): 
-	text = new_text
-	$HBox/text.text = text
+		text = new_text
+		$HBox/text.text = text
 
 func _on_dialogueOption_focus_entered():
 	$HBox/indicator.visible = true

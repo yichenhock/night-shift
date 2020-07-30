@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 
 func _ready():
-	OS.window_fullscreen = true
+#	OS.window_fullscreen = true
 	change_state("mainMenu")
 	var volume = Data.get_data("volume",1) #from 0 to 1
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(volume))

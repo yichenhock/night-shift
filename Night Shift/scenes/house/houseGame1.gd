@@ -4,7 +4,7 @@ enum Direction {LEFT, RIGHT, NULL = -1}
 var current_scene = null
 
 func _ready():
-	change_environment("shopFront")
+	change_environment("bedroom")
 	
 func change_environment(new_scene_name):
 	

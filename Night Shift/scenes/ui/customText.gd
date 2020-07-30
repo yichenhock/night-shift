@@ -1,7 +1,7 @@
 extends RichTextLabel
-#enum VAlign {TOP, CENTER, BOTTOM}
-#export(VAlign) var v_align = VAlign.TOP setget set_v_align
+export(String) var blip_sfx = "" setget set_blip_sfx
 export var delay = 0.08
+export(bool) var center = false
 signal fully_displayed()
 signal character_displayed()
 const char_delays = {
@@ -13,18 +13,12 @@ const char_delays = {
 	";": 2
 }
 
+func set_blip_sfx(new_sfx): 
+	blip_sfx = new_sfx
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-#func set_v_align(new_v_align):
-#	v_align = new_v_align
-#	if v_align == VAlign.TOP: 
-#		pass
-#	elif v_align == VAlign.CENTER:
-#		pass
-#	else: #BOTTOM
-#		pass
 
 func _on_typeTimer_timeout():
 	type_character()
@@ -35,15 +29,19 @@ func type_character():
 	emit_signal("character_displayed")
 	
 func wait_for_next_character(): 
-	if visible_characters == get_text().length(): 
-		emit_signal("fully_displayed")
-		return
-	var next_character = get_text()[visible_characters-1] 
-	var char_delay = delay
-	if next_character in char_delays: 
-		char_delay = char_delays[next_character]*delay
-		
-	$typeTimer.start(char_delay) 
+	if text!="":
+		if visible_characters == get_text().length(): 
+			emit_signal("fully_displayed")
+			return
+		var next_character = get_text()[visible_characters-1] 
+		var char_delay = delay
+		if next_character in char_delays: 
+			char_delay = char_delays[next_character]*delay
+		else: 
+			if blip_sfx!="":
+				Audio.play(blip_sfx)
+			
+		$typeTimer.start(char_delay) 
 	
 func get_text(): 
 	return text
@@ -56,6 +54,8 @@ func type_text(new_text):
 	
 func set_text(new_text): 
 	text = new_text
+	if center == true: 
+		bbcode_text = "[center]"+text
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"): 

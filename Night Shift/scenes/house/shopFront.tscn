@@ -9,42 +9,10 @@
 [ext_resource path="res://scenes/work/flicker.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/bg/shop_front/air-con.png" type="Texture" id=8]
 [ext_resource path="res://assets/bg/shop_front/behind_front.png" type="Texture" id=9]
+[ext_resource path="res://scenes/house/shopfront-trees.tres" type="Animation" id=10]
+[ext_resource path="res://scenes/house/shopfront-aircon.tres" type="Animation" id=11]
 
-[sub_resource type="Animation" id=1]
-resource_name = "trees"
-length = 3.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("bg:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 5, 6, 7, 8 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "airconOperating"
-length = 0.3
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("aircon:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
-}
-
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 
 [node name="shopFront" instance=ExtResource( 3 )]
@@ -61,11 +29,11 @@ hframes = 9
 
 [node name="background" type="AnimationPlayer" parent="." index="2"]
 autoplay = "trees"
-anims/trees = SubResource( 1 )
+anims/trees = ExtResource( 10 )
 
 [node name="airconAnimation" type="AnimationPlayer" parent="." index="3"]
 autoplay = "airconOperating"
-anims/airconOperating = SubResource( 2 )
+anims/airconOperating = ExtResource( 11 )
 
 [node name="aircon" type="Sprite" parent="." index="4"]
 position = Vector2( 256, 54 )
@@ -80,7 +48,7 @@ centered = false
 
 [node name="lamp" type="Sprite" parent="." index="6"]
 modulate = Color( 1, 1, 1, 0.913725 )
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( 246, 40 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
@@ -99,23 +67,5 @@ audio = "frontdoorSFX"
 
 [node name="landingPos" type="Position2D" parent="." index="10"]
 position = Vector2( 116, 186 )
-
-[node name="startPos" type="Position2D" parent="." index="11"]
-position = Vector2( 344, 186 )
-
-[node name="ui" type="CanvasLayer" parent="." index="12"]
-
-[node name="speechbubble" type="NinePatchRect" parent="ui" index="0"]
-anchor_left = 0.369
-anchor_top = 0.415
-anchor_right = 0.369
-anchor_bottom = 0.415
-margin_left = 35.02
-margin_top = 2.95
-margin_right = 75.02
-margin_bottom = 42.95
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="interacted" from="frontDoor" to="." method="change_environment" binds= [ "landing" ]]
 [connection signal="interacted" from="frontDoor" to="." method="_on_frontDoor_interacted"]

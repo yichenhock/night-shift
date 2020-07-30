@@ -136,6 +136,10 @@ rect = Rect2( 0, 0, 420, 270 )
 material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.698334
+margin_top = 0.698334
+margin_right = 0.698334
+margin_bottom = 0.698334
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,7 +1,6 @@
 extends Label
-#enum VAlign {TOP, CENTER, BOTTOM}
-#export(VAlign) var v_align = VAlign.TOP setget set_v_align
-export var delay = 0.08
+export(String) var blip_sfx = "" setget set_blip_sfx
+export var delay = 0.1
 signal fully_displayed()
 signal character_displayed()
 const char_delays = {
@@ -13,24 +12,21 @@ const char_delays = {
 	";": 2
 }
 
+func set_blip_sfx(new_sfx): 
+	blip_sfx = new_sfx
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-#func set_v_align(new_v_align):
-#	v_align = new_v_align
-#	if v_align == VAlign.TOP: 
-#		pass
-#	elif v_align == VAlign.CENTER:
-#		pass
-#	else: #BOTTOM
-#		pass
 
 func _on_typeTimer_timeout():
 	type_character()
 	wait_for_next_character()
 
 func type_character(): 
+	if blip_sfx!="":
+				Audio.play(blip_sfx)
 	visible_characters+=1
 	emit_signal("character_displayed")
 	
@@ -43,6 +39,10 @@ func wait_for_next_character():
 		var char_delay = delay
 		if next_character in char_delays: 
 			char_delay = char_delays[next_character]*delay
+#		else: 
+#			if blip_sfx!="":
+#				Audio.play(blip_sfx)
+#				print(get_text()[visible_characters-1] )
 			
 		$typeTimer.start(char_delay) 
 	

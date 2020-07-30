@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/work/bubbles.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/options.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ui/dialogueOption.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/indicator.png" type="Texture" id=4]
 
@@ -8,6 +9,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,20 +26,22 @@ margin_bottom = 36.0
 grow_horizontal = 0
 grow_vertical = 2
 custom_constants/separation = 8
-alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="option1" parent="buttons" instance=ExtResource( 3 )]
+text = "Hello"
 
 [node name="option2" parent="buttons" instance=ExtResource( 3 )]
 margin_top = 32.0
 margin_bottom = 56.0
+text = "uwu"
 
 [node name="option3" parent="buttons" instance=ExtResource( 3 )]
 margin_top = 64.0
 margin_bottom = 88.0
+text = "v"
 
 [node name="bubbles" type="Position2D" parent="."]
 position = Vector2( 277.743, 122.312 )

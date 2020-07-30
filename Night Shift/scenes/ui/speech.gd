@@ -4,11 +4,18 @@ signal finished()
 export var delay = 0.1 setget set_delay
 export var speech_pos = Vector2(0,0) setget position_speech
 
+export(String) var blip_sfx = "" setget set_blip_sfx
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize() 
 	$dialogue.type_text("Hey! I dont really like you... you make me feel liek the worst person in the world i wish you can just sepuku and kil urself ya know theres no better option, and i think itd do the world a massive favour so why dont u do it before i do it for you musef")
 	resize_speech()
+
+
+func set_blip_sfx(new_sfx): 
+	blip_sfx = new_sfx
+	$dialogue.blip_sfx = blip_sfx
 
 func show_speech(text): 
 	$dialogue.type_text(text)

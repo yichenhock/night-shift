@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/work/shopUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/bg/shop_front/shop_front.png" type="Texture" id=2]
+[ext_resource path="res://assets/bg/shop_front/shopfront-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/player_shop.png" type="Texture" id=3]
 [ext_resource path="res://assets/bg/shop_front/shop_front_lighting.png" type="Texture" id=4]
 [ext_resource path="res://scenes/work/flicker.tscn" type="PackedScene" id=5]
@@ -10,9 +10,15 @@
 [ext_resource path="res://scenes/work/radio.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ui/options.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/work/customers/kid.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/bg/shop_front/air-con.png" type="Texture" id=11]
+[ext_resource path="res://scenes/house/shopfront-trees.tres" type="Animation" id=12]
+[ext_resource path="res://scenes/house/shopfront-aircon.tres" type="Animation" id=13]
+[ext_resource path="res://assets/bg/shop_front/behind_front.png" type="Texture" id=14]
 
-[sub_resource type="Animation" id=1]
-resource_name = "lookLeft"
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerShop:frame")
@@ -27,8 +33,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "look_around"
+[sub_resource type="Animation" id=3]
 length = 15.0
 loop = true
 tracks/0/type = "value"
@@ -48,13 +53,34 @@ tracks/0/keys = {
 scale = Vector2( 1.00148, 1 )
 script = ExtResource( 6 )
 
+[node name="behingBG" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+centered = false
+
 [node name="bg" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
+hframes = 9
+
+[node name="bgAnim" type="AnimationPlayer" parent="."]
+autoplay = "shopfront-trees"
+anims/shopfront-trees = ExtResource( 12 )
+
+[node name="aircon" type="Sprite" parent="."]
+position = Vector2( 256.62, 54 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+hframes = 3
+
+[node name="airconAnim" type="AnimationPlayer" parent="."]
+autoplay = "shopfront-aircon"
+anims/shopfront-aircon = ExtResource( 13 )
 
 [node name="lamp" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.737255 )
+material = SubResource( 1 )
+position = Vector2( 246, 40 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 centered = false
@@ -70,8 +96,8 @@ hframes = 2
 
 [node name="player" type="AnimationPlayer" parent="."]
 autoplay = "look_around"
-anims/lookLeft = SubResource( 1 )
-anims/look_around = SubResource( 2 )
+anims/lookLeft = SubResource( 2 )
+anims/look_around = SubResource( 3 )
 
 [node name="customer_pos" type="Position2D" parent="."]
 position = Vector2( 210, 230 )

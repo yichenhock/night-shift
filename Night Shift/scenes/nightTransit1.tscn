@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/nightTransit1.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/music/bgm/night-1.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]

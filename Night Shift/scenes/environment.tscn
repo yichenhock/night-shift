@@ -14,5 +14,3 @@ __meta__ = {
 }
 
 [node name="collision" parent="." instance=ExtResource( 2 )]
-bordersizeL = 0
-bordersizeR = 0

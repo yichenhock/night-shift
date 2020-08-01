@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/dynamic_fonts/SUPERNAT1002.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/ui/indicator.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ui/prologue.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast-Italic.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/prologue/newpaper.png" type="Texture" id=5]
 [ext_resource path="res://assets/prologue/newpaper_pointed.png" type="Texture" id=6]
 [ext_resource path="res://assets/prologue/newspaper_closeup.png" type="Texture" id=7]
@@ -18,6 +19,7 @@
 [ext_resource path="res://assets/music/sfx/put-back-letter.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/music/sfx/rip-letter.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/music/sfx/pull-out-letter.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/fonts/SUPERNAT1001.TTF" type="DynamicFontData" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bigBlob"
@@ -158,8 +160,11 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.02, 1.8 )
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "close"
+[sub_resource type="DynamicFont" id=8]
+size = 10
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=9]
 length = 3.8
 step = 0.05
 tracks/0/type = "value"
@@ -237,8 +242,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "drawer"
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -254,8 +258,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 20, 19 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "drawerClose"
+[sub_resource type="Animation" id=11]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("envelope:frame")
@@ -296,8 +299,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "hidden"
+[sub_resource type="Animation" id=12]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("envelope:visible")
@@ -336,8 +338,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "hold"
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -365,7 +366,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("envelope:frame")
@@ -434,7 +435,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.4, 1.8 )
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("envelope:frame")
@@ -473,7 +474,7 @@ tracks/2/keys = {
 "values": [ Vector2( 376, 102 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("indicator:rect_position")
@@ -500,7 +501,7 @@ tracks/1/keys = {
 "values": [ Color( 0.870588, 0.921569, 0.827451, 0.588235 ), Color( 0.870588, 0.921569, 0.827451, 0.392157 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("indicator:rect_position")
@@ -527,8 +528,7 @@ tracks/1/keys = {
 "values": [ Color( 0.870588, 0.921569, 0.827451, 0.588235 ) ]
 }
 
-[sub_resource type="Animation" id=17]
-resource_name = "fadeOut"
+[sub_resource type="Animation" id=18]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("uiText:modulate")
@@ -557,12 +557,12 @@ __meta__ = {
 }
 
 [node name="mainBG" type="Sprite" parent="."]
-modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 position = Vector2( 0, -1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
 hframes = 27
+frame = 9
 
 [node name="bgAnim" type="AnimationPlayer" parent="."]
 autoplay = "blob"
@@ -609,16 +609,15 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 15 )
 centered = false
 hframes = 27
-frame = 3
+frame = 12
 
 [node name="letterText" type="RichTextLabel" parent="."]
-visible = false
 margin_left = 112.0
-margin_top = 115.0
+margin_top = 89.0
 margin_right = 488.0
-margin_bottom = 157.0
+margin_bottom = 191.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/normal_font = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[color=#8f4342]ELECTRIC SERVICE TERMINATION NOTICE (LEGAL ACTION)[/color]
 
@@ -637,13 +636,13 @@ __meta__ = {
 
 [node name="eAnim" type="AnimationPlayer" parent="."]
 autoplay = "hidden"
-anims/close = SubResource( 8 )
-anims/drawer = SubResource( 9 )
-anims/drawerClose = SubResource( 10 )
-anims/hidden = SubResource( 11 )
-anims/hold = SubResource( 12 )
-anims/open = SubResource( 13 )
-anims/opened = SubResource( 14 )
+anims/close = SubResource( 9 )
+anims/drawer = SubResource( 10 )
+anims/drawerClose = SubResource( 11 )
+anims/hidden = SubResource( 12 )
+anims/hold = SubResource( 13 )
+anims/open = SubResource( 14 )
+anims/opened = SubResource( 15 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -685,8 +684,8 @@ __meta__ = {
 }
 
 [node name="indicatorAnimation" type="AnimationPlayer" parent="UI"]
-anims/bob = SubResource( 15 )
-anims/still = SubResource( 16 )
+anims/bob = SubResource( 16 )
+anims/still = SubResource( 17 )
 
 [node name="text" parent="UI" instance=ExtResource( 14 )]
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
@@ -694,10 +693,11 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = -44.0
+margin_top = -46.0
 margin_right = -16.0
-margin_bottom = 0.0
-text = "Some more text here"
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Some text here"
 scroll_active = false
 blip_sfx = "playerBlip"
 center = true
@@ -705,8 +705,9 @@ center = true
 [node name="uiText" type="Label" parent="UI"]
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 anchor_right = 1.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 1 )
+margin_top = -1.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 4 )
 text = "PRESS [SPACE] TO CONTINUE"
 align = 1
 valign = 2
@@ -715,7 +716,7 @@ __meta__ = {
 }
 
 [node name="uiTextAnim" type="AnimationPlayer" parent="UI"]
-anims/fadeOut = SubResource( 17 )
+anims/fadeOut = SubResource( 18 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )

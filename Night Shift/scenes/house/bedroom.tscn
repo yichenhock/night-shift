@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/bg/bedroom/clock-on.png" type="Texture" id=5]
 [ext_resource path="res://assets/bg/bedroom/lamp.png" type="Texture" id=6]
 [ext_resource path="res://assets/bg/bedroom/moonlight.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast-Italic.tres" type="DynamicFont" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "roomLighting"
@@ -173,10 +173,10 @@ position = Vector2( 260, 150 )
 [node name="uiText" type="Label" parent="." index="15"]
 modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 anchor_right = 1.0
-margin_left = 132.0
-margin_top = 6.0
-margin_right = 301.0
-margin_bottom = 17.0
+margin_left = 102.0
+margin_top = 4.0
+margin_right = 331.0
+margin_bottom = 19.0
 custom_fonts/font = ExtResource( 8 )
 text = "[A]/[D] TO MOVE   [X] TO INTERACT"
 __meta__ = {

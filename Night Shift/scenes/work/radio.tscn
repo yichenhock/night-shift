@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/ui/radio/btn5.png" type="Texture" id=9]
 [ext_resource path="res://assets/ui/radio/btn6.png" type="Texture" id=10]
 [ext_resource path="res://assets/ui/radio/btn8.png" type="Texture" id=11]
-[ext_resource path="res://assets/fonts/pascalpixel.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Notepen.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/ui/radio/btn7-pressed.png" type="Texture" id=13]
 [ext_resource path="res://assets/ui/radio/btn3-pressed.png" type="Texture" id=14]
 [ext_resource path="res://assets/ui/radio/btn5-pressed.png" type="Texture" id=15]
@@ -24,9 +24,9 @@
 [ext_resource path="res://assets/ui/radio/btn0-pressed.png" type="Texture" id=22]
 [ext_resource path="res://assets/ui/radio/display-on.png" type="Texture" id=23]
 [ext_resource path="res://assets/ui/radio/display-off.png" type="Texture" id=24]
-[ext_resource path="res://assets/fonts/monospace.tres" type="DynamicFont" id=25]
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=26]
-[ext_resource path="res://scenes/ui/ui_instructions.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Graph-35-pix.tres" type="DynamicFont" id=25]
+[ext_resource path="res://scenes/ui/ui_choices.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Graph-35-pix_small.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/ui/radio/radio-slider.png" type="Texture" id=29]
 [ext_resource path="res://assets/ui/radio/radio-slider-grabber.png" type="Texture" id=30]
 [ext_resource path="res://assets/ui/radio/power-btn.png" type="Texture" id=31]
@@ -60,7 +60,6 @@ tracks/0/keys = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
 script = ExtResource( 35 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,7 +67,7 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 pause_mode = 2
-modulate = Color( 0.141176, 0.192157, 0.2, 0.313726 )
+modulate = Color( 0.141176, 0.192157, 0.2, 0.588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -127,7 +126,7 @@ margin_left = 143.0
 margin_top = 128.0
 margin_right = 158.0
 margin_bottom = 138.0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.294118, 0.34902, 0.360784, 1 )
 text = "FM"
 __meta__ = {
@@ -290,17 +289,17 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -126.0
-margin_top = 81.0
+margin_top = 82.0
 margin_right = -43.0
-margin_bottom = -52.0
-custom_constants/separation = 2
+margin_bottom = -51.0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="piano" type="Label" parent="notes"]
 margin_right = 83.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "124.11 piano"
@@ -308,7 +307,7 @@ text = "124.11 piano"
 [node name="jazz" type="Label" parent="notes"]
 margin_top = 16.0
 margin_right = 83.0
-margin_bottom = 30.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "85.43 jazz"
@@ -316,7 +315,7 @@ text = "85.43 jazz"
 [node name="lo-fi" type="Label" parent="notes"]
 margin_top = 32.0
 margin_right = 83.0
-margin_bottom = 46.0
+margin_bottom = 48.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "95.36 lo-fi"
@@ -324,7 +323,7 @@ text = "95.36 lo-fi"
 [node name="pop" type="Label" parent="notes"]
 margin_top = 48.0
 margin_right = 83.0
-margin_bottom = 62.0
+margin_bottom = 64.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "104.24 pop"
@@ -332,7 +331,7 @@ text = "104.24 pop"
 [node name="pop2" type="Label" parent="notes"]
 margin_top = 64.0
 margin_right = 83.0
-margin_bottom = 78.0
+margin_bottom = 80.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "111.12 ???"
@@ -349,16 +348,16 @@ __meta__ = {
 }
 
 [node name="vol" type="Label" parent="volume"]
-margin_right = 16.0
+margin_right = 21.0
 margin_bottom = 16.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.478431, 0.533333, 0.52549, 1 )
 text = "Vol"
 
 [node name="volSlider" type="HSlider" parent="volume"]
-margin_left = 20.0
-margin_right = 98.0
+margin_left = 25.0
+margin_right = 103.0
 margin_bottom = 12.0
 rect_min_size = Vector2( 60, 0 )
 custom_icons/grabber_disabled = ExtResource( 30 )
@@ -378,7 +377,7 @@ one_shot = true
 anims/flash = SubResource( 3 )
 
 [node name="ui_instructions" parent="." instance=ExtResource( 27 )]
-show_stock = false
+visible = false
 [connection signal="pressed" from="power" to="." method="_on_power_pressed"]
 [connection signal="pressed" from="keypad/btn1" to="." method="set_display" binds= [ 1 ]]
 [connection signal="pressed" from="keypad/btn2" to="." method="set_display" binds= [ 2 ]]

@@ -8,12 +8,13 @@
 [ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=6]
 [ext_resource path="res://assets/ui/items/cigarettes.png" type="Texture" id=7]
 [ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=8]
-[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/dynamic_fonts/retrogaming.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/fonts/Retro Gaming.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/fonts/dynamic_fonts/comicoro.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/ui/x_button.png" type="Texture" id=12]
 [ext_resource path="res://assets/ui/items/gum.png" type="Texture" id=13]
 [ext_resource path="res://scenes/day/restock.gd" type="Script" id=14]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
@@ -200,7 +201,7 @@ item_cost = 2
 [node name="description" type="Label" parent="VBoxContainer2"]
 margin_top = 36.0
 margin_right = 420.0
-margin_bottom = 46.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 0, 10 )
 custom_fonts/font = ExtResource( 11 )
 text = "Chewing gum"

@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/ui/timer.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/player_shadow.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "shadow"
 loop = true
 tracks/0/type = "value"
@@ -19,8 +19,7 @@ tracks/0/keys = {
 "values": [ 0, 2, 3, 4, 4 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "decrement"
+[sub_resource type="Animation" id=2]
 loop = true
 step = 0.05
 
@@ -35,7 +34,7 @@ hframes = 5
 
 [node name="shadowAnim" type="AnimationPlayer" parent="shadow"]
 autoplay = "shadow"
-anims/shadow = SubResource( 2 )
+anims/shadow = SubResource( 1 )
 
 [node name="customer" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -48,6 +47,6 @@ hframes = 9
 [node name="countdown" type="AnimationPlayer" parent="."]
 autoplay = "decrement"
 playback_speed = 0.1
-anims/decrement = SubResource( 1 )
+anims/decrement = SubResource( 2 )
 
 [node name="speech_pos" type="Position2D" parent="."]

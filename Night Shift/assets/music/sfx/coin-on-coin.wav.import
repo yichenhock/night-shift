@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/coin-on-coin.wav-7d07b9c7c0fffd925d7874a8ac2d038d.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/coin-on-coin.wav"
+dest_files=[ "res://.import/coin-on-coin.wav-7d07b9c7c0fffd925d7874a8ac2d038d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -9,9 +9,8 @@ export(String) var blip_sfx = "" setget set_blip_sfx
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize() 
-	$dialogue.type_text("Hey! I dont really like you... you make me feel liek the worst person in the world i wish you can just sepuku and kil urself ya know theres no better option, and i think itd do the world a massive favour so why dont u do it before i do it for you musef")
+#	$dialogue.type_text("Hey! I dont really like you... you make me feel liek the worst person in the world i wish you can just sepuku and kil urself ya know theres no better option, and i think itd do the world a massive favour so why dont u do it before i do it for you musef")
 	resize_speech()
-
 
 func set_blip_sfx(new_sfx): 
 	blip_sfx = new_sfx
@@ -36,7 +35,7 @@ func position_speech(new_pos):
 
 func resize_speech(): # ~21 chars per line
 	var font = $dialogue.get_font("normal_font")
-	var font_height = font.get_height()
+	var font_height = font.get_height() + font.get_spacing(0)
 	
 	$dialogue.rect_size.x = 125
 	
@@ -67,3 +66,5 @@ func resize_speech(): # ~21 chars per line
 func _on_dialogue_character_displayed():
 	resize_speech()
 	
+func _on_dialogue_fully_displayed():
+	emit_signal("finished")

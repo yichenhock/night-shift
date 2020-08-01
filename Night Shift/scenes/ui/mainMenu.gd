@@ -6,7 +6,7 @@ signal change_state(new_state)
 func _ready():
 	$ColorRect.visible = false
 	$shutter.frame = 0
-	$VBox/newGame.grab_focus()
+#	$VBox/newGame.grab_focus()
 	$shutterAnimation.play("shutterOpen")
 	yield($shutterAnimation,"animation_finished")
 	Audio.play("mainMenuBGM")
@@ -17,6 +17,7 @@ func _process(delta): # delta in seconds
 	$sky/bg.motion_offset.x = scroll_x*0.05
 	$sky/fg1.motion_offset.x = scroll_x*0.2
 	$sky/fg2.motion_offset.x = scroll_x
+	
 
 func _on_newGame_pressed():
 	disable_menu(true)
@@ -93,3 +94,5 @@ func disable_menu(state):
 func _on_volSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(value))
 	Data.set_data("volume",value)
+
+

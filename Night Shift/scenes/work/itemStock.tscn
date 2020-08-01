@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/ui/items/itembox_unselected.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/1980_1.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/dynamic_fonts/1980_1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/work/itemStock.gd" type="Script" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "hide"

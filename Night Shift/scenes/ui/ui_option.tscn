@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ui/ui_button.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/monospace_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/ui/ui_option.gd" type="Script" id=3]
 
 [sub_resource type="StreamTexture" id=1]
@@ -89,7 +89,7 @@ tracks/2/keys = {
 [node name="ui_option" type="Label"]
 margin_top = 8.0
 margin_right = 98.0
-margin_bottom = 16.0
+margin_bottom = 24.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )

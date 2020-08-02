@@ -7,7 +7,7 @@ func _ready():
 #	$UI/options/buttons/option1.grab_focus()
 	$UI/radio.visible = false
 	
-	var kid = $customers.get_resource("kid").instance()
+	var kid = $customers.get_resource("teen").instance()
 	add_child(kid)
 	kid.global_position = $customer_pos.position
 	$UI/speech.speech_pos = kid.get_node("speech_pos").global_position

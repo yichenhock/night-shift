@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/music/sfx/door_close.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/Audio.gd" type="Script" id=2]
@@ -14,8 +14,12 @@
 [ext_resource path="res://assets/music/bgm/radio_static.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/music/bgm/wind09.ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/music/sfx/blips/player-blip.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/music/sfx/coin-on-table.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/music/sfx/coin-on-coin.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/music/bgm/Prelude-in-F_-Minor.wav" type="AudioStream" id=17]
 
 [node name="Audio" type="Node"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
@@ -51,12 +55,24 @@ stream = ExtResource( 10 )
 [node name="radioKeypadSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
-[node name="radioStaticBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
-bus = "Radio"
-
 [node name="windNormal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
 [node name="playerBlip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+
+[node name="coinTableSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="coinCoinSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="radio" type="Node" parent="."]
+
+[node name="preludeFm" type="AudioStreamPlayer" parent="radio"]
+stream = ExtResource( 17 )
+bus = "Radio"
+
+[node name="radioStaticBGM" type="AudioStreamPlayer" parent="radio"]
+stream = ExtResource( 12 )
+bus = "Radio"

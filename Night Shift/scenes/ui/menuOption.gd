@@ -11,11 +11,17 @@ func set_text(new_text):
 	$HBox/option.text = option_text
 
 func _on_menuOption_focus_entered():
-	$HBox/indicator.visible = true
+	if not disabled:
+		$HBox/option.add_font_override("font",load("res://assets/fonts/dynamic_fonts/Typecast-Italic.tres"))
+#	$HBox/indicator.visible = true
 
 func _on_menuOption_focus_exited():
-	$HBox/indicator.visible = false
+	$HBox/option.add_font_override("font",load("res://assets/fonts/dynamic_fonts/Typecast.tres"))
+#	$HBox/indicator.visible = false
 	Audio.play("menuClickSFX")
 
 func _on_menuOption_mouse_entered():
 	grab_focus()
+
+func _on_menuOption_mouse_exited():
+	release_focus()

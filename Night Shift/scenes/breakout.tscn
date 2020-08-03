@@ -2,12 +2,13 @@
 
 [ext_resource path="res://assets/pong/breakout_bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/pong/bar.png" type="Texture" id=2]
-[ext_resource path="res://assets/fonts/retrogaming.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/dynamic_fonts/retrogaming.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/pong/spikes.png" type="Texture" id=4]
 [ext_resource path="res://assets/pong/life.png" type="Texture" id=5]
 [ext_resource path="res://scripts/paddle.gd" type="Script" id=6]
 [ext_resource path="res://scripts/breakout.gd" type="Script" id=7]
 [ext_resource path="res://assets/pong/mum_head.png" type="Texture" id=8]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "flash"

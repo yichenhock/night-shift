@@ -78,10 +78,13 @@ func _on_radioTimeout_timeout():
 	
 func play_radio(): 
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Radio"),false)
+	Audio.stop_radio()
+	
 	if current_channel in radio_channels: 
-		Audio.stop("radioStaticBGM")
+		if radio_channels.has(current_channel):
+			Audio.play_radio("preludeFm")
 	else: 
-		Audio.play("radioStaticBGM")
+		Audio.play_radio("radioStaticBGM")
 		
 func stop_radio(): 
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Radio"),true)
@@ -89,10 +92,11 @@ func stop_radio():
 func _on_volSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Radio"), linear2db(value))
 	Data.set_data("volume",value)
+	
 
 func _input(event): 
 	if visible: 
-		get_tree().set_input_as_handled() #this stops other _input from being triggered by this event
+#		get_tree().set_input_as_handled() #this stops other _input from being triggered by this event
 		if event.is_action_pressed("q"): 
 			emit_signal("returned")
 			visible = false

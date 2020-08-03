@@ -9,9 +9,12 @@
 [ext_resource path="res://scenes/house/store.gd" type="Script" id=7]
 [ext_resource path="res://assets/music/sfx/shutter_operating.wav" type="AudioStream" id=8]
 [ext_resource path="res://scenes/house/spawnPos.gd" type="Script" id=9]
-[ext_resource path="res://assets/fonts/1980_label.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/dynamic_fonts/1980_label.tres" type="DynamicFont" id=10]
 [ext_resource path="res://scenes/house/drawer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/bg/store/radio.png" type="Texture" id=12]
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "lighting"

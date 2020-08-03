@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/dynamic_fonts/comicoro.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/ui/customText.gd" type="Script" id=2]
 
 [node name="customText" type="RichTextLabel"]

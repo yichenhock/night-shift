@@ -5,9 +5,9 @@
 [ext_resource path="res://scenes/ui/customText.tscn" type="PackedScene" id=4]
 
 [node name="speech" type="Control"]
-margin_left = -64.0
+margin_left = -98.0
 margin_top = -40.0
-margin_right = 61.0
+margin_right = 27.0
 margin_bottom = 22.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -21,7 +21,7 @@ __meta__ = {
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -93.0
+margin_right = -76.0
 margin_bottom = -42.0
 rect_min_size = Vector2( 32, 20 )
 rect_scale = Vector2( 2, 2 )
@@ -39,9 +39,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 7.0
-margin_right = -6.99999
-margin_bottom = 9.0
+margin_top = 9.0
+margin_right = 8.0
+margin_bottom = -13.0
 text = "Hey wassup"
 scroll_active = false
 delay = 0.1
@@ -50,4 +50,5 @@ delay = 0.1
 wait_time = 0.25
 autostart = true
 [connection signal="character_displayed" from="dialogue" to="." method="_on_dialogue_character_displayed"]
+[connection signal="fully_displayed" from="dialogue" to="." method="_on_dialogue_fully_displayed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

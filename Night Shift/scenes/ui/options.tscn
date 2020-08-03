@@ -1,9 +1,49 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/work/bubbles.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/options.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ui/dialogueOption.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/indicator.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("circle0:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("circle1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("circle2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 2 ) ]
+}
 
 [node name="options" type="Control"]
 anchor_right = 1.0
@@ -25,51 +65,57 @@ margin_right = -24.0
 margin_bottom = 36.0
 grow_horizontal = 0
 grow_vertical = 2
-custom_constants/separation = 8
+custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="option1" parent="buttons" instance=ExtResource( 3 )]
-text = "Hello"
+visible = false
+option_text = "We don't sell that to kids"
 
 [node name="option2" parent="buttons" instance=ExtResource( 3 )]
-margin_top = 32.0
-margin_bottom = 56.0
-text = "uwu"
+visible = false
+margin_top = 40.0
+margin_bottom = 64.0
+option_text = "I'll get you one"
 
 [node name="option3" parent="buttons" instance=ExtResource( 3 )]
-margin_top = 64.0
-margin_bottom = 88.0
-text = "v"
+visible = false
+margin_top = 80.0
+margin_bottom = 104.0
+option_text = "Do you have ID?"
 
 [node name="bubbles" type="Position2D" parent="."]
-position = Vector2( 277.743, 122.312 )
+position = Vector2( 277.743, 116.312 )
 script = ExtResource( 1 )
 buttons_path = NodePath("../buttons")
 
 [node name="circle0" type="Sprite" parent="bubbles"]
-visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 0.666667 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="circle1" type="Sprite" parent="bubbles"]
-visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 0.764706 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="circle2" type="Sprite" parent="bubbles"]
-visible = false
 modulate = Color( 0.141176, 0.192157, 0.2, 1 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="bubblesEnd" type="Position2D" parent="bubbles"]
 position = Vector2( 36.1376, -18.4312 )
 
+[node name="bubblesAnim" type="AnimationPlayer" parent="bubbles"]
+anims/appear = SubResource( 1 )
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.25
 autostart = true
+
+[node name="dialogueTimer" type="Timer" parent="."]
+wait_time = 0.1
 [connection signal="timeout" from="Timer" to="bubbles" method="_on_Timer_timeout"]

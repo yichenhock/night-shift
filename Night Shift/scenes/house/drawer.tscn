@@ -9,8 +9,9 @@
 [ext_resource path="res://assets/ui/items/candy.png" type="Texture" id=7]
 [ext_resource path="res://assets/ui/items/water.png" type="Texture" id=8]
 [ext_resource path="res://assets/ui/items/newpaper.png" type="Texture" id=9]
-[ext_resource path="res://scenes/ui/ui_instructions.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ui/ui_choices.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/house/drawer.gd" type="Script" id=12]
+
 
 [node name="drawer" type="Control"]
 pause_mode = 2

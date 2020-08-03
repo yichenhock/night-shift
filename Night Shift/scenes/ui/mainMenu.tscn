@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/ui/main_menu_shutter.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/pixelmix.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/dynamic_fonts/comicoro.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/ui/menuOption.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/bg/dream/dream_layer0.png" type="Texture" id=4]
 [ext_resource path="res://assets/bg/dream/dream_layer1.png" type="Texture" id=5]
@@ -27,6 +27,8 @@
 [ext_resource path="res://assets/ui/main_menu/slider_grabber_hover.png" type="Texture" id=25]
 [ext_resource path="res://scenes/ui/fade_screen.tscn" type="PackedScene" id=26]
 [ext_resource path="res://scenes/dream/fadeClouds.tres" type="Animation" id=27]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/white_px.png" type="Texture" id=29]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -35,8 +37,7 @@ blend_mode = 1
 texture = ExtResource( 23 )
 region_rect = Rect2( 0, 0, 41, 3 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.184314, 0.247059, 0.258824, 1 )
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="Animation" id=4]
 length = 1.3
@@ -95,6 +96,8 @@ tracks/1/keys = {
 [node name="mainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.440125
+margin_right = 0.440125
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -160,11 +163,11 @@ centered = false
 
 [node name="title" type="Label" parent="."]
 margin_left = 131.0
-margin_top = 95.0
+margin_top = 94.5819
 margin_right = 290.0
-margin_bottom = 107.0
+margin_bottom = 111.582
 rect_min_size = Vector2( 0, 12 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.870588, 0.921569, 0.827451, 1 )
 text = "N I G H T   K I O S K"
 align = 1
@@ -182,27 +185,36 @@ __meta__ = {
 }
 
 [node name="newGame" parent="VBox" instance=ExtResource( 3 )]
-option_text = "New game"
+option_text = "new shift"
 
 [node name="continue" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 14.0
 margin_bottom = 24.0
-option_text = "Continue"
+disabled = true
+option_text = "next shift"
 
 [node name="options" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 28.0
 margin_bottom = 38.0
-option_text = "Options"
+option_text = "options"
 
 [node name="about" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 42.0
 margin_bottom = 52.0
-option_text = "About"
+option_text = "about"
 
 [node name="quit" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 56.0
 margin_bottom = 66.0
-option_text = "Quit"
+option_text = "quit"
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 178.331, 139.694 )
+points = PoolVector2Array( 0, 0, 54, 0 )
+width = 1.0
+default_color = Color( 0.870588, 0.921569, 0.827451, 1 )
+texture = ExtResource( 29 )
+texture_mode = 1
 
 [node name="shutter" type="Sprite" parent="."]
 position = Vector2( 210, 126 )
@@ -235,7 +247,7 @@ __meta__ = {
 
 [node name="about" type="Label" parent="about"]
 margin_right = 120.0
-margin_bottom = 41.0
+margin_bottom = 53.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "ABOUT
@@ -248,9 +260,9 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="about"]
-margin_top = 49.0
+margin_top = 61.0
 margin_right = 120.0
-margin_bottom = 63.0
+margin_bottom = 75.0
 rect_min_size = Vector2( 0, 14 )
 custom_constants/separation = 10
 alignment = 1
@@ -283,9 +295,9 @@ texture_hover = ExtResource( 16 )
 expand = true
 
 [node name="tools" type="Label" parent="about"]
-margin_top = 71.0
+margin_top = 83.0
 margin_right = 120.0
-margin_bottom = 90.0
+margin_bottom = 108.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "Tools: 
@@ -312,7 +324,7 @@ __meta__ = {
 
 [node name="options" type="Label" parent="options"]
 margin_right = 120.0
-margin_bottom = 8.0
+margin_bottom = 11.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
 text = "OPTIONS"
@@ -322,24 +334,23 @@ __meta__ = {
 }
 
 [node name="volControl" type="HBoxContainer" parent="options"]
-margin_top = 16.0
+margin_top = 19.0
 margin_right = 120.0
-margin_bottom = 32.0
+margin_bottom = 27.0
 alignment = 1
 
 [node name="volIcon" type="TextureRect" parent="options/volControl"]
-margin_left = 7.0
-margin_right = 27.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 20, 16 )
+margin_left = 23.0
+margin_right = 33.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 10, 8 )
 texture = ExtResource( 19 )
-expand = true
 
 [node name="volSlider" type="HSlider" parent="options/volControl"]
-margin_left = 31.0
-margin_right = 113.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 82, 16 )
+margin_left = 37.0
+margin_right = 97.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 60, 8 )
 custom_icons/grabber_highlight = ExtResource( 25 )
 custom_icons/grabber = ExtResource( 24 )
 custom_styles/slider = SubResource( 2 )
@@ -349,25 +360,24 @@ step = 0.01
 value = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="options"]
-margin_top = 40.0
+margin_top = 35.0
 margin_right = 120.0
-margin_bottom = 52.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 0, 12 )
 alignment = 1
 
 [node name="fullscreen" type="Label" parent="options/HBoxContainer"]
-margin_left = 20.0
-margin_top = 2.0
-margin_right = 83.0
-margin_bottom = 10.0
+margin_left = 24.0
+margin_right = 80.0
+margin_bottom = 11.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
-text = "Fullscreen: "
+text = "Fullscreen"
 valign = 1
 
 [node name="fullscreenButton" type="TextureButton" parent="options/HBoxContainer"]
-margin_left = 87.0
-margin_right = 99.0
+margin_left = 84.0
+margin_right = 96.0
 margin_bottom = 12.0
 rect_min_size = Vector2( 12, 12 )
 expand = true
@@ -384,8 +394,9 @@ __meta__ = {
 }
 
 [node name="on" type="TextureRect" parent="options/HBoxContainer/fullscreenButton"]
+margin_top = -0.440117
 margin_right = 10.0
-margin_bottom = 10.0
+margin_bottom = 9.55988
 rect_min_size = Vector2( 10, 10 )
 texture = ExtResource( 22 )
 expand = true
@@ -394,13 +405,12 @@ __meta__ = {
 }
 
 [node name="fullscreenTip" type="Label" parent="options"]
-margin_top = 60.0
+margin_top = 55.0
 margin_right = 120.0
-margin_bottom = 79.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.141176, 0.192157, 0.2, 1 )
-text = "Press F4 to
-toggle fullscreen"
+text = "F4 to toggle"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

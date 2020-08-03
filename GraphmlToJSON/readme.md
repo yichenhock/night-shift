@@ -11,3 +11,5 @@ Tries to remove a load of junk from the resulting json files and mostly does so,
 ### Usage
 
 Just gotta run the .exe file in this folder bro
+
+if there are any problems lmk

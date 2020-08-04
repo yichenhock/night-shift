@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ui/ui_button.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/dynamic_fonts/Typecast.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/dynamic_fonts/Graph-35-pix_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/ui/ui_option.gd" type="Script" id=3]
 
 [sub_resource type="StreamTexture" id=1]

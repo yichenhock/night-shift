@@ -3,7 +3,8 @@
 [ext_resource path="res://scenes/work/coins/coin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bg/store/coins/10p_clicked.png" type="Texture" id=2]
 [ext_resource path="res://assets/bg/store/coins/10p.png" type="Texture" id=3]
-[ext_resource path="res://scenes/work/coins/coin_shadow.shader" type="Shader" id=4]
+[ext_resource path="res://scenes/work/coins/table_shadow.shader" type="Shader" id=4]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

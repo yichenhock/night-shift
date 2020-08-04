@@ -59,31 +59,34 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -104.0
-margin_top = -52.0
-margin_right = -24.0
-margin_bottom = 36.0
+margin_left = -106.0
+margin_top = -58.0
+margin_right = -6.0
+margin_bottom = 66.0
 grow_horizontal = 0
 grow_vertical = 2
-custom_constants/separation = 16
+custom_constants/separation = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="option1" parent="buttons" instance=ExtResource( 3 )]
 visible = false
+margin_left = -7.62939e-06
 option_text = "We don't sell that to kids"
 
 [node name="option2" parent="buttons" instance=ExtResource( 3 )]
 visible = false
-margin_top = 40.0
-margin_bottom = 64.0
+margin_left = -7.62939e-06
+margin_top = 36.0
+margin_bottom = 66.0
 option_text = "I'll get you one"
 
 [node name="option3" parent="buttons" instance=ExtResource( 3 )]
 visible = false
-margin_top = 80.0
-margin_bottom = 104.0
+margin_left = -7.62939e-06
+margin_top = 72.0
+margin_bottom = 102.0
 option_text = "Do you have ID?"
 
 [node name="bubbles" type="Position2D" parent="."]

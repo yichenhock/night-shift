@@ -3,5 +3,4 @@
 [ext_resource path="res://assets/fonts/Comicoro.ttf" type="DynamicFontData" id=1]
 
 [resource]
-extra_spacing_top = -7
 font_data = ExtResource( 1 )

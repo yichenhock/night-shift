@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/coin-slide2.wav-fdc4e2c7fc405ad76299d4a2ae55f6dd.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/coin-slide2.wav"
+dest_files=[ "res://.import/coin-slide2.wav-fdc4e2c7fc405ad76299d4a2ae55f6dd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0

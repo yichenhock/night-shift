@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/work/coins/table_shadow.shader" type="Shader" id=1]
+[ext_resource path="res://assets/bg/store/coins/5pound.png" type="Texture" id=2]
+[ext_resource path="res://assets/bg/store/coins/5pound_clicked.png" type="Texture" id=3]
+[ext_resource path="res://scenes/work/coins/bank_note.gd" type="Script" id=4]
+[ext_resource path="res://assets/bg/store/coins/crumpled-note.png" type="Texture" id=5]
+[ext_resource path="res://assets/bg/store/coins/crumpled-note_clicked.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/shadow = false
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 159, 84 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 1 )
+shader_param/shadow = true
+
+[node name="bankNote" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="note" type="Sprite" parent="."]
+material = SubResource( 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="noteClicked" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="crumpledShadow" type="Sprite" parent="."]
+visible = false
+material = SubResource( 3 )
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 5 )
+
+[node name="crumpled" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="crumpledClicked" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( -84, -5, -68, -24, -57, -34, -46, -24, -29, -34, -15, -35, -4, -34, -3, -42, 8, -59, 21, -63, 35, -60, 40, -37, 52, -34, 80, -31, 77, -12, 80, -4, 71, 18, 71, 41, 28, 47, 17, 64, -2, 53, -13, 45, -34, 23, -46, 19, -65, -2 )
+[connection signal="input_event" from="." to="." method="_on_bankNote_input_event"]

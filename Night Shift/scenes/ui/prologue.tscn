@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://assets/fonts/dynamic_fonts/SUPERNAT1002.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/dynamic_fonts/poco.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/ui/indicator.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ui/prologue.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/dynamic_fonts/Typecast-Italic.tres" type="DynamicFont" id=4]
@@ -562,7 +562,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
 hframes = 27
-frame = 9
+frame = 24
 
 [node name="bgAnim" type="AnimationPlayer" parent="."]
 autoplay = "blob"
@@ -605,17 +605,19 @@ __meta__ = {
 }
 
 [node name="envelope" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 15 )
 centered = false
 hframes = 27
-frame = 12
+frame = 10
 
 [node name="letterText" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 112.0
-margin_top = 89.0
+margin_top = 115.0
 margin_right = 488.0
-margin_bottom = 191.0
+margin_bottom = 157.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
@@ -692,12 +694,13 @@ modulate = Color( 0.870588, 0.921569, 0.827451, 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -46.0
-margin_right = -16.0
+margin_left = 40.0
+margin_top = -40.0
+margin_right = -40.0
 margin_bottom = -2.0
 custom_fonts/normal_font = ExtResource( 1 )
-text = "Some text here"
+text = "Some text hereasd
+asdf"
 scroll_active = false
 blip_sfx = "playerBlip"
 center = true

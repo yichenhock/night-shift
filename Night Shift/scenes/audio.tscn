@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/music/sfx/door_close.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/Audio.gd" type="Script" id=2]
@@ -17,6 +17,11 @@
 [ext_resource path="res://assets/music/sfx/coin-on-table.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/music/sfx/coin-on-coin.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/music/bgm/Prelude-in-F_-Minor.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/music/sfx/coin-slide1.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/music/sfx/coin-slide3.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/music/sfx/coin-slide2.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/music/sfx/coin-on-note.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/music/sfx/uncrumple.wav" type="AudioStream" id=22]
 
 [node name="Audio" type="Node"]
 pause_mode = 2
@@ -67,6 +72,9 @@ stream = ExtResource( 15 )
 [node name="coinCoinSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
 
+[node name="coinNoteSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
 [node name="radio" type="Node" parent="."]
 
 [node name="preludeFm" type="AudioStreamPlayer" parent="radio"]
@@ -76,3 +84,15 @@ bus = "Radio"
 [node name="radioStaticBGM" type="AudioStreamPlayer" parent="radio"]
 stream = ExtResource( 12 )
 bus = "Radio"
+
+[node name="coinSlideSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="coinSlideSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="coinSlideSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="uncrumpleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )

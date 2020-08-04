@@ -27,6 +27,5 @@ func change_location(location):
 func on_button_focused(button): 
 	change_location(button.get_node("optionText").rect_global_position + Vector2(-10,8))
 
-
 func _on_Timer_timeout():
 	update_circles()

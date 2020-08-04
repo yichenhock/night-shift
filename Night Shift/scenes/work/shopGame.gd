@@ -7,11 +7,11 @@ func _ready():
 #	$UI/options/buttons/option1.grab_focus()
 	$UI/radio.visible = false
 	
-	var kid = $customers.get_resource("teen").instance()
+	var kid = $customers.get_resource("kid").instance()
 	add_child(kid)
 	kid.global_position = $customer_pos.position
 	$UI/speech.speech_pos = kid.get_node("speech_pos").global_position
-	$UI/speech.show_speech("It's been a long day, I need a fag.")
+	$UI/speech.show_speech("Hey mister, can I get a pack of cigarettes?")
 	
 	
 func _input(event):
